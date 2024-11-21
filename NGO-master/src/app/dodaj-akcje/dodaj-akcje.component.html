@@ -1,0 +1,18 @@
+<p>Dodawanie akcji</p>
+<form (ngSubmit)="addEvent()">
+    <label for="title">Tytuł:</label>
+    <input type="text" id="title" [(ngModel)]="newEvent.title" name="title" required>
+  
+    <label for="description">Opis:</label>
+    <input type="text" id="description" [(ngModel)]="newEvent.description" name="description" required>
+  
+    <label for="date">Data:</label>
+    <input type="date" id="date" [(ngModel)]="newEvent.date" name="date" required>
+  
+    <label for="location">Lokacja:</label>
+    <input type="text" id="location" [(ngModel)]="newEvent.location" name="location" required>
+  
+    <button type="submit">Dodaj akcję</button>
+  </form>
+
+  

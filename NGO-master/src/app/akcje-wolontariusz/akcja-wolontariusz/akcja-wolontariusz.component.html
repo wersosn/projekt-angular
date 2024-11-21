@@ -1,0 +1,28 @@
+
+@for(zapis of Zapisy; track zapis.id){
+  
+
+<div class="container mt-3">
+    <div class="action-box col-12">
+        <div class="action-details col-2">
+            <h3 style="font-weight: 700;">{{zapis.title }}</h3>
+            <p><strong>Data:</strong> {{ zapis.date }}</p>
+            <p><strong>Lokalizacja:</strong> {{ zapis.location }}</p>
+          
+        </div>
+        <div class="col-3">
+            <p><strong>Opis:</strong> {{ zapis.shortDescription }}</p>
+        </div>
+        <div class="col-3 text-center">
+        <p>Lista {{ zapis.list }}:</p>
+        <span class="action-time">{{ zapis.time }}</span>
+    </div>
+        <div class="action-buttons col-3">
+           
+            <button class="btn" (click)="editTime($event)">Zmień godzinę zapisu</button>
+            <button class="btn" (click)="cancel($event)">Zrezygnuj</button>
+        </div>
+    </div>
+</div>
+}
+

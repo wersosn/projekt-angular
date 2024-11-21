@@ -1,0 +1,23 @@
+<div class="container-cols-12 " style=" display: flex;
+justify-content: center;
+align-items: center;">
+<div id="OknoLog">
+    <div class="login-container card p-4 shadow-sm col-md-12 col-lg-12">
+        <h2 class="text-center mb-4">Zaloguj się na swoje konto</h2>
+        <form class="d-flex flex-column align-items-center">
+            <div class="mb-3 col-10">
+                <label for="login" class="form-label">Login</label>
+                <input type="text" id="login" name="login" class="form-control" placeholder="Wprowadź login">
+            </div>
+            <div class="mb-3 col-10">
+                <label for="password" class="form-label">Hasło</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Wprowadź hasło">
+            </div>
+            <p class="register-link text-center">
+                Nie jesteś zweryfikowany? <a routerLink="/rejestracja-component" routerLinkActive="active" ariaCurrentWhenActive="page">Zarejestruj się</a>
+            </p>
+            <button type="submit" class="btn btn-primary w-75 mt-3">Zaloguj się</button>
+        </form>
+    </div>
+</div>
+</div>

@@ -1,0 +1,67 @@
+
+<div class="container-cols-12 " style=" display: flex;
+justify-content: center;
+align-items: center;">
+  <div class="register-container">
+        <h1 class="text-center mb-4">Podaj dane do rejestracji</h1>
+        <form>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="login" class="form-label">Login</label>
+                    <input type="text" class="form-control" id="login" name="login" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="password" class="form-label">Hasło</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="firstName" class="form-label">Imię</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="lastName" class="form-label">Nazwisko</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" required>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="phone" class="form-label">Telefon</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="address" class="form-label">Adres</label>
+                <input type="text" class="form-control" id="address" name="address" required>
+            </div>
+
+            <div class="row mb-3 ss">
+                <label class="col-4 form-label">Płeć</label>
+                <div class="col-8 d-flex ">
+                    <div class="form-check me-3">
+                        <input class="form-check-input ss" type="radio" name="gender" id="genderM" value="M" required>
+                        <label class="form-check-label ss1" for="genderM">M</label>
+                    </div>
+                    <div class="form-check m">
+                        <input class="form-check-input ss" type="radio" name="gender" id="genderF" value="F" required>
+                        <label class="form-check-label ss1" for="genderF">F</label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Zarejestruj się</button>
+
+            <p class="notice mt-3 text-muted">
+                Uwaga! Prośba rejestracji jest wysyłana do administratora, który musi potwierdzić zlecenie rejestracji.
+            </p>
+        </form>
+    </div>
+</div>

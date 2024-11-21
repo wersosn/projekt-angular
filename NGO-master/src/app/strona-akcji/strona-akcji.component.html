@@ -1,0 +1,90 @@
+<div class="container mt-4">
+  <div class="row">
+    <!-- Sekcja Obrazów -->
+    <div class="col-lg-6 col-md-12 order-md-1">
+      <div class="row">
+        <div class="col-12 mb-2" style="display: flex; justify-content: center; align-items: center;">
+          <img src="https://sklep.lambda.pl/userdata/public/gfx/5826/folia-banerowa-na-plandeki-Oracal-seria-451-049-ciemnoniebieska-king-blue.jpg" alt="Obraz" class="img-fluid rounded">
+        </div>
+        <div class="col-6">
+          <img src="https://sklep.lambda.pl/userdata/public/gfx/5826/folia-banerowa-na-plandeki-Oracal-seria-451-049-ciemnoniebieska-king-blue.jpg" alt="Obraz" class="img-fluid rounded">
+        </div>
+        <div class="col-6">
+          <img src="https://sklep.lambda.pl/userdata/public/gfx/5826/folia-banerowa-na-plandeki-Oracal-seria-451-049-ciemnoniebieska-king-blue.jpg" alt="Obraz" class="img-fluid rounded">
+        </div>
+      </div>
+    </div>
+
+    <!-- Szczegóły Akcji -->
+    <div class="col-lg-6 col-md-12 order-md-2">
+      <div class="karta">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div *ngIf="eventDetails">
+            <h3>{{eventDetails.title}}</h3>
+            <p class="card-subtitle mb-2 text-muted">{{eventDetails.date}},<br>{{eventDetails.location}}</p>
+          </div>
+          <button class="btn btn-primary btn-sm udz">Weź Udział!</button>
+        </div>
+        <hr>
+        <h3>Dostępne godziny</h3>
+         <!-- Dodać automatyczne generowanie przycisków na podstawie danych -->
+          <!-- Lista Podstawowa -->
+         <h6 class="mb-2">Lista podstawowa:</h6>
+         <div class="d-flex flex-wrap gap-2 mb-3 justify-content-center">
+             <button type="button" class="btn btn-secondary disabled">
+                 9:00
+                 <br>
+                 <small class="text-white">Liczba miejsc: 0</small>
+             </button>
+             <button type="button" class="btn btn-primary">
+                 12:00
+                 <br>
+                 <small class="text-white">Liczba miejsc: 5</small>
+             </button>
+             <button type="button" class="btn btn-primary">
+                 15:00
+                 <br>
+                 <small class="text-white">Liczba miejsc: 2</small>
+             </button>
+             <button type="button" class="btn btn-primary">
+                 18:00
+                 <br>
+                 <small class="text-white">Liczba miejsc: 1</small>
+             </button>
+         </div>
+         <!-- Lista Rezerwowa -->
+         <h6 class="mb-2">Lista rezerwowa:</h6>
+         <div class="d-flex flex-wrap gap-2 mb-3 justify-content-center">
+             <button type="button" class="btn btn-primary">
+                 9:00
+                 <br>
+                 <small class="text-white">Liczba miejsc: 3</small>
+             </button>
+             <button type="button" class="btn btn-primary">
+                 12:00
+                 <br>
+                 <small class="text-white">Liczba miejsc: 20</small>
+             </button>
+             <button type="button" class="btn btn-primary">
+                 15:00
+                 <br>
+                 <small class="text-white">Liczba miejsc: 10</small>
+             </button>
+             <button type="button" class="btn btn-secondary disabled">
+                 18:00
+                 <br>
+                 <small class="text-white">Liczba miejsc: 0</small>
+             </button>
+         </div>
+        </div>
+         <!-- Opis -->
+        <div class="karta mt-2">
+          <h3>Opis</h3>
+          <p class="text-muted">
+            {{eventDetails?.description}}
+          </p>
+      
+      </div>
+
+  </div>
+</div>

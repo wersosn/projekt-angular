@@ -1,0 +1,22 @@
+<div class="row">
+@for(action of actions; track action.id){
+  <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <img src="https://sklep.lambda.pl/userdata/public/gfx/b5ba5b93de162471a3a920ca9f91bb5d.jpg" alt="Akcja obraz" class="card-image img-fluid" />
+        <div class="card-body">
+          <div id="gora">
+            <div>
+            <h2 class="card-title ">{{ action.title }}</h2>
+            <p class="card-text">{{ action.date }} - {{ action.location }}</p>
+          </div>
+        
+          </div>
+          <div class="card-footer mt-3">
+            <p class="card-description">{{ action.shortDescription }}</p>
+            <button class="btn btn-primary w-100" routerLink="/strona-akcji-component" routerLinkActive="active" ariaCurrentWhenActive="page">Przejdź do akcji</button>
+          </div>
+        </div>
+      </div>
+  </div>
+
+    }</div>
