@@ -37,9 +37,9 @@ export class KalendarzComponent implements OnInit{
     this.eventService.events$.subscribe(events => { // Przypisanie pobranych wydarzeń do lokalnej tablicy events
       this.events = events;
       this.calendarEvents = [];
-
       this.events.forEach(event => {
-        this.calendarEvents.push({id: event.id, title: event.title, date: event.date, color: event.color});
+        let eventTitle = event.title + ' - ' + event.time;
+        this.calendarEvents.push({id: event.id, title: eventTitle, date: event.date, color: event.color});
       });
       this.calendarOptions.events = [...this.calendarEvents];
     });
