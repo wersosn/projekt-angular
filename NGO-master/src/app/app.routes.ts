@@ -5,7 +5,7 @@ import { RejestracjaComponent } from './rejestracja/rejestracja.component';
 import { LogowanieComponent } from './logowanie/logowanie.component';
 import { KontoWolontariuszComponent } from './konto-wolontariusz/konto-wolontariusz.component';
 import { AkcjeWolontariuszComponent } from './akcje-wolontariusz/akcje-wolontariusz.component';
-import { AkcjeAministratorComponent } from './akcje-aministrator/akcje-aministrator.component';
+import { AkcjeAdministratorComponent } from './akcje-administrator/akcje-administrator.component';
 import { KontaAministratorComponent } from './konta-aministrator/konta-aministrator.component';
 import { StronaAkcjiComponent } from './strona-akcji/strona-akcji.component';
 import { DodajAkcjeComponent } from './dodaj-akcje/dodaj-akcje.component';
@@ -19,7 +19,7 @@ import { EdytujAkcjeComponent } from './edytuj-akcje/edytuj-akcje.component';
     { path: 'logowanie-component', component: LogowanieComponent },  
     { path: 'konto-wolontariusza', component: KontoWolontariuszComponent },
     { path: 'akcje-wolontariusza', component: AkcjeWolontariuszComponent },
-    { path: 'akcje-administratora', component: AkcjeAministratorComponent },  
+    { path: 'akcje-administratora', component: AkcjeAdministratorComponent },  
     { path: 'konta-administrator', component: KontaAministratorComponent },  
     { path: 'dodaj-akcje', component: DodajAkcjeComponent },
     { path: 'edytuj-akcje/:id', component: EdytujAkcjeComponent } 
