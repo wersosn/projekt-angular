@@ -20,16 +20,24 @@
       <div class="karta">
         <div class="d-flex justify-content-between align-items-center mb-3">
           <div *ngIf="eventDetails">
-            <h3>{{eventDetails.title}}</h3>
-            <p class="card-subtitle mb-2 text-muted">{{eventDetails.date}},<br>{{eventDetails.location}}</p>
+            <h3>{{eventDetails?.title}}</h3>
+            <p class="card-subtitle mb-2 text-muted">{{eventDetails?.date}},<br>{{eventDetails?.location}}</p>
           </div>
           <button class="btn btn-primary btn-sm udz">Weź Udział!</button>
         </div>
         <hr>
         <h3>Dostępne godziny</h3>
+        <h6 class="mb-2">Lista podstawowa:</h6>
+        <div class="d-flex flex-wrap gap-2 mb-3 justify-content-center">
+          <button type="button" class="btn btn-secondary">
+              {{eventDetails?.time}}
+              <br>
+              <small class="text-white">Liczba miejsc: {{eventDetails?.seats}}</small>
+          </button>
+          </div>
          <!-- Dodać automatyczne generowanie przycisków na podstawie danych -->
           <!-- Lista Podstawowa -->
-         <h6 class="mb-2">Lista podstawowa:</h6>
+         <!--<h6 class="mb-2">Lista podstawowa:</h6>
          <div class="d-flex flex-wrap gap-2 mb-3 justify-content-center">
              <button type="button" class="btn btn-secondary disabled">
                  9:00
@@ -51,9 +59,9 @@
                  <br>
                  <small class="text-white">Liczba miejsc: 1</small>
              </button>
-         </div>
+         </div>-->
          <!-- Lista Rezerwowa -->
-         <h6 class="mb-2">Lista rezerwowa:</h6>
+         <!--<h6 class="mb-2">Lista rezerwowa:</h6>
          <div class="d-flex flex-wrap gap-2 mb-3 justify-content-center">
              <button type="button" class="btn btn-primary">
                  9:00
@@ -76,14 +84,18 @@
                  <small class="text-white">Liczba miejsc: 0</small>
              </button>
          </div>
-        </div>
+        </div>-->
          <!-- Opis -->
         <div class="karta mt-2">
           <h3>Opis</h3>
           <p class="text-muted">
             {{eventDetails?.description}}
           </p>
-      
+          <!-- Przycisk z routerLink -->
+          <button class="btn btn-primary w-100" [routerLink]="['/edytuj-akcje', eventDetails?.id]" routerLinkActive="active" ariaCurrentWhenActive="page">
+            Edytuj wydarzenie
+          </button>
+
       </div>
 
   </div>

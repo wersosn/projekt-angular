@@ -9,7 +9,9 @@ export interface Event {
   title: string;
   description: string;
   date: string;
+  time: string;
   location: string;
+  seats: number;
 }
 
 @Injectable({
@@ -46,7 +48,10 @@ export class EventService {
   getEventById(id: number): Observable<Event> {
     return this.http.get<Event>(`${this.eventsUrl}/${id}`);
   }
-
+  // Aktualizacja wydarzenia
+  updateEvent(eventId: number, eventData: any): Observable<Event> {
+    return this.http.put<Event>(`http://localhost:3000/api/events/${eventId}`, eventData);
+  }  
 }
 
 // Stary kod

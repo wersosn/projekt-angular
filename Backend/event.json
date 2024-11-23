@@ -1,23 +1,20 @@
 [
   {
-    "id": 1732171457711,
-    "title": "test",
-    "description": "test",
-    "date": "2024-11-20",
-    "location": "test"
+    "id": 1732357477256,
+    "title": "Akcja 1",
+    "description": "Test",
+    "date": "2024-11-23",
+    "time": "16:24",
+    "location": "Białystok",
+    "seats": 10
   },
   {
-    "id": 1732181041853,
-    "title": "xx",
-    "description": "xx",
-    "date": "2024-11-21",
-    "location": "xx"
-  },
-  {
-    "id": 1732183877987,
-    "title": "akcja",
-    "description": "testowa",
-    "date": "2024-11-07",
-    "location": "Białystok"
+    "id": 1732362385388,
+    "title": "Akcja 2",
+    "description": "Test 2 :)",
+    "date": "2024-12-08",
+    "time": "18:00",
+    "location": "Warszawa",
+    "seats": 30
   }
 ]

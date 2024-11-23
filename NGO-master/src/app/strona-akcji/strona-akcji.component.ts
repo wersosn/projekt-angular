@@ -5,11 +5,12 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { EventService, Event } from '../event.service';
+import { RouterModule } from '@angular/router';  // Zaimportuj RouterModule
 
 @Component({
   selector: 'app-strona-akcji',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './strona-akcji.component.html',
   styleUrl: './strona-akcji.component.scss'
 })

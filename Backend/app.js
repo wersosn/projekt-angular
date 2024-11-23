@@ -56,5 +56,20 @@ app.post('/api/events', (req, res) => {
   res.status(201).json(newEvent);
 });
 
+// Post do edycji wydarzenia
+app.put('/api/events/:id', (req, res) => {
+  const eventId = parseInt(req.params.id, 10);
+  const updatedEvent = req.body;
+  // Znajdź wydarzenie po ID i zaktualizuj
+  let event = events.find(e => e.id === eventId);
+  if (event) {
+    Object.assign(event, updatedEvent);
+    saveEvents(events);
+    res.status(200).json(event);
+  } else {
+    res.status(404).send('Event not found edit');
+  }
+});
+
 // Uruchomienie serwera na porcie 3000
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));

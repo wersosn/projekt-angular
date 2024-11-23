@@ -1,6 +1,6 @@
 <div class="card">
-  <p>Dodawanie akcji</p>
-  <form [formGroup]="eventForm" (ngSubmit)="addEvent()">
+  <h2>Edycja akcji</h2>
+  <form [formGroup]="eventForm" (ngSubmit)="saveEvent()">
     <!-- Tytuł -->
     <div class="form-group">
       <label for="title">Tytuł:</label>
@@ -59,7 +59,6 @@
       </div>
     </div>
 
-    <!-- Przycisk wysyłania -->
-    <button type="submit" [disabled]="eventForm.invalid">Stwórz akcję</button>
+    <button type="submit">Zapisz zmiany</button>
   </form>
 </div>

@@ -9,6 +9,7 @@ import { AkcjeAministratorComponent } from './akcje-aministrator/akcje-aministra
 import { KontaAministratorComponent } from './konta-aministrator/konta-aministrator.component';
 import { StronaAkcjiComponent } from './strona-akcji/strona-akcji.component';
 import { DodajAkcjeComponent } from './dodaj-akcje/dodaj-akcje.component';
+import { EdytujAkcjeComponent } from './edytuj-akcje/edytuj-akcje.component';
 
  export  const routes: Routes = [
     { path: '', component: BlogAkcjiComponent }, 
@@ -20,6 +21,7 @@ import { DodajAkcjeComponent } from './dodaj-akcje/dodaj-akcje.component';
     { path: 'akcje-wolontariusza', component: AkcjeWolontariuszComponent },
     { path: 'akcje-administratora', component: AkcjeAministratorComponent },  
     { path: 'konta-administrator', component: KontaAministratorComponent },  
-    { path: 'dodaj-akcje', component: DodajAkcjeComponent } 
+    { path: 'dodaj-akcje', component: DodajAkcjeComponent },
+    { path: 'edytuj-akcje/:id', component: EdytujAkcjeComponent } 
    ];
    //
