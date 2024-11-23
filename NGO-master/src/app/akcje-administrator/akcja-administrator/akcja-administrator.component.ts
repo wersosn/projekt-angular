@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-akcja-aministrator',
+  selector: 'app-akcja-administrator',
   standalone: true,
   imports: [],
-  templateUrl: './akcja-aministrator.component.html',
-  styleUrl: './akcja-aministrator.component.scss'
+  templateUrl: './akcja-administrator.component.html',
+  styleUrl: './akcja-administrator.component.scss'
 })
-export class AkcjaAministratorComponent {
+export class AkcjaAdministratorComponent {
  actions = [
     {
       id: 1,
