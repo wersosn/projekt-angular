@@ -71,31 +71,6 @@ export class EventService {
   updateEvent(eventId: number, eventData: any): Observable<Event> {
     return this.http.put<Event>(`http://localhost:3000/api/events/${eventId}`, eventData);
   } 
-
-  // Pobranie grup dla konkretnego wydarzenia na podstawie ID (synchronicznie z BehaviorSubject)
-  getGroups(eventId: number): Group[] | undefined {
-    return this.eventsSubject.value.find(e => e.id === eventId)?.groups;
-  }
-  // Pobieranie konkretnej grupy dla konkretnego wydarzenia na podstawie ID
-  getGroupById(eventId: number, groupId: number): Observable<Group> {
-    return this.http.get<Group>(`${this.eventsUrl}/${eventId}/${this.groupsUrl}/${groupId}`);
-  }
-  // Dodanie nowego wydarzenia do serwera
-  addGroup(eventId: number, group: Group): Observable<Group> {
-    return this.http.post<Group>(`${this.eventsUrl}/${eventId}/${this.groupsUrl}`, group).pipe(
-      tap(newGroup => {
-        const currentEventGroups = this.eventsSubject.value.find(e => e.id === eventId)?.groups;
-        // TODO Dodać grupę do eventu
-        // Nie wiem jak to zrobić, może jak tego nie poprawicie i wszystko skończe to usiąde nad tym
-        //this.eventsSubject.next([...currentEventGroups, newGroup]);
-      })
-    );
-  }
-  // Aktualizacja grupy
-  updateGroup(eventId: number, groupId: number, groupData: any): Observable<Event> {
-    return this.http.put<Event>(`${this.eventsUrl}/${eventId}/${this.groupsUrl}/${groupId}`, groupData);
-  } 
-
 }
 
 // Stary kod
