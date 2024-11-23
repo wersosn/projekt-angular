@@ -6,7 +6,8 @@
     "date": "2024-11-23",
     "time": "16:24",
     "location": "Białystok",
-    "seats": 10
+    "seats": 10,
+    "groups": []
   },
   {
     "id": 1732362385388,
@@ -15,6 +16,22 @@
     "date": "2024-12-08",
     "time": "18:00",
     "location": "Warszawa",
-    "seats": 30
+    "seats": 30,
+    "groups": [
+      {
+        "id": 0,
+        "type": null,
+        "name": "narciarze",
+        "size": 10,
+        "time": "19:00",
+        "users": [
+          {
+            "id": 1,
+            "name": "adam",
+            "surname": "małysz"
+          }
+        ]
+      }
+    ]
   }
 ]

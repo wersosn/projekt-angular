@@ -36,7 +36,7 @@ app.get('/api/events', (req, res) => {
   res.json(events);
 });
 
-// Get do konkretnej akcji
+// Get do konkretnego wydarzenia
 app.get('/api/events/:id', (req, res) => {
   const eventId = parseInt(req.params.id, 10);
   const event = events.find(e => e.id === eventId);
@@ -69,6 +69,89 @@ app.put('/api/events/:id', (req, res) => {
   } else {
     res.status(404).send('Event not found edit');
   }
+});
+
+// Get do pobierania wszystkich grup z konkretnego wydarzenia
+app.get('/api/events/:id/groups', (req,res) => {
+  const eventId = parseInt(req.params.id, 10);
+  const event = events.find(e => e.id === eventId);
+
+  if (!event) {
+    res.status(404).send('Event not found');
+  }
+  const groups = event.groups;
+
+  if (groups) {
+    res.json(groups);
+  } else {
+    res.status(404).send('Event ' + event.title + ' has no groups');
+  }
+});
+
+// Get do konkretnej grupy w konkretnego wydarzenia
+app.get('/api/events/:id/groups/:groupId', (req,res) => {
+  const eventId = parseInt(req.params.id, 10);
+  const event = events.find(e => e.id === eventId);
+
+  if (!event) {
+    res.status(404).send('Event not found');
+  }
+  const groups = event.groups;
+
+  if (!groups) {
+    res.status(404).send('Event ' + event.title + ' has no groups');
+  }
+  const groupId = parseInt(req.params.groupId, 10);
+  const group = groups.find(e => e.groupId === groupId);
+
+  if (group) {
+    res.json(group);
+  } else {
+    res.status(404).send('Group not found');
+  }
+});
+
+// Post do dodawania grupy dla konkretnego wydarzenia
+app.post('/api/events/:id/groups', (req, res) => {
+  const eventId = parseInt(req.params.id, 10);
+  const event = events.find(e => e.id === eventId);
+  
+  if (!event) {
+    res.status(404).send('Event not found');
+  }
+  const newGroup = req.body;
+
+  events[events.indexOf(event)].groups.push(newGroup);
+  saveEvents(events);
+
+  res.status(201).json(newGroup);
+});
+
+// Put do edycji grupy w konkretnym wydarzeniu
+app.put('/api/events/:id/groups/:groupId', (req, res) => {
+  const eventId = parseInt(req.params.id, 10);
+  const updatedGroup = req.body;
+  let event = events.find(e => e.id === eventId);
+
+  if (!event) {
+    res.status(404).send('Event not found');
+  }
+  let groups = event.groups;
+
+  if (!groups) {
+    res.status(404).send('Event ' + event.title + ' has no groups');
+  }
+  const groupId = parseInt(req.params.groupId, 10);
+  let group = groups.find(e => e.groupId === groupId);
+
+  if(!group) {
+    res.status(404).send('Group not found');
+  }
+  // TODO Do przetestowania
+  // Nie jestem pewien czy to w taki sposób zadziała
+  Object.assign(group, updatedGroup); 
+  saveEvents(events);
+  res.status(200).json(event);
 });
 
 // Uruchomienie serwera na porcie 3000
