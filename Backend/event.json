@@ -17,6 +17,7 @@
     "time": "18:00",
     "location": "Warszawa",
     "seats": 30,
+    "color": "green",
     "groups": [
       {
         "id": 0,
