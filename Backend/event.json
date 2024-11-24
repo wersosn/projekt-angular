@@ -6,16 +6,25 @@
     "date": "2024-11-23",
     "time": "16:24",
     "location": "Białystok",
-    "seats": 10
+    "seats": 8
   },
   {
     "id": 1732362385388,
     "title": "Akcja 2",
     "description": "Test 2 :)",
     "date": "2024-12-08",
-    "time": "18:00",
+    "time": "23:00",
     "location": "Warszawa",
-    "seats": 30,
+    "seats": 65,
     "color": "green"
+  },
+  {
+    "id": 1732434632501,
+    "title": "tes2",
+    "description": "sad",
+    "date": "2024-11-06",
+    "time": "20:00",
+    "location": "fsdf",
+    "seats": 50
   }
 ]

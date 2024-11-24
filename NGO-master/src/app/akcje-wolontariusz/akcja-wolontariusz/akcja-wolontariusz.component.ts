@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-
+import { Component,OnInit  } from '@angular/core';
+import { UserEventService } from '../../UserEvent.service';
+import { ActivatedRoute } from '@angular/router';
+import { EventService } from '../../event.service';
 @Component({
   selector: 'app-akcja-wolontariusz',
   standalone: true,
@@ -7,79 +9,40 @@ import { Component } from '@angular/core';
   templateUrl: './akcja-wolontariusz.component.html',
   styleUrl: './akcja-wolontariusz.component.scss'
 })
-export class AkcjaWolontariuszComponent {
-  Zapisy= [
-    {
-      id: 1,
-      title: 'Akcja 1',
-      location: 'Kraków',
-      date: '2023-11-24',
-      list: 'Postawowa',
-      time:'9:00',
-      shortDescription: 'Krótki opis akcji 1.',
-    
-    },
-    {
-      id: 2,
-      title: 'Akcja 2',
-      location: 'Warszawa',
-      date: '2023-11-25',
-      list: 'Postawowa',
-      time:'15:00',
-      shortDescription: 'Krótki opis akcji 2.',
-    
-    },
-    {
-      id: 3,
-      title: 'Akcja 3',
-      location: 'Gdańsk',
-      date: '2023-11-26',
-      list: 'Rezerwowa',
-      time:'18:00',
-      shortDescription: 'Krótki opis akcji 3.',
+export class AkcjaWolontariuszComponent implements OnInit {
+  Zapisy: any[] = []; // Tablica akcji, w których bierze udział użytkownik
 
-    },
-    {
-      id: 4,
-      title: 'Akcja 4',
-      location: 'Poznań',
-      date: '2023-11-27',
-     list: 'Rezerwowa',
-     time:'12:00',
-      shortDescription: 'Krótki opis akcji 4.',
-     
-    },
-    {
-      id: 5,
-      title: 'Akcja 5',
-      location: 'Łódź',
-      date: '2023-11-28',
-     list: 'Rezerwowa',
-     time:'12:00',
-      shortDescription: 'Krótki opis akcji 5.',
-    
-    },
-    {
-      id: 6,
-      title: 'Akcja 6',
-      location: 'Wrocław',
-      date: '2023-11-29',
-    list: 'Rezerwowa',
-    time:'15:00',
-      shortDescription: 'Krótki opis akcji 6.',
-     
-    },
-  ];
-  
- 
+  constructor(private eventService: EventService,private userEventService: UserEventService, private route: ActivatedRoute) {}
 
-  editTime(event: Event) {
-    event.stopPropagation();
-    console.log('Zmiana godziny zapisu');
+  ngOnInit(): void {
+    // Pobierz ID użytkownika z lokalnego storage lub sesji 
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      this.userEventService.getUserEvents(Number(userId)).subscribe(data => {
+        this.Zapisy = data; // Zapisz dane wydarzeń do zmiennej
+      });
+    } 
   }
+  cancelEvent(eventId: number): void {
+    let userId = localStorage.getItem('userId');
+    if(userId){
 
-  cancel(event: Event) {
-    event.stopPropagation();
-    console.log('Rezygnacja');
+ 
+      this.eventService.removeEvent( parseInt(userId), eventId).subscribe({
+        next: () => {
+          alert('Zrezygnowałeś z udziału w wydarzeniu!');
+          this.ngOnInit(); // Odśwież dane po rezygnacji
+        },
+        error: (err) => {
+          console.error('Błąd przy rezygnacji z wydarzenia:', err);
+          alert('Wystąpił problem przy rezygnacji.');
+        }
+      });
+    }
+    }
+
+  // Dodajemy metodę trackZapisId, aby Angular mógł śledzić zmiany w elementach
+  trackZapisId(index: number, zapis: any): number {
+    return zapis.id; // Używamy unikalnego ID zapisu
   }
 }

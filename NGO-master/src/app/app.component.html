@@ -13,8 +13,21 @@
     <li><a routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">Blog Akcji</a></li>
     <li><a routerLink="/kalendarz-akcji-component" routerLinkActive="active" ariaCurrentWhenActive="page">Kalendarz
         akcji</a></li>
-    <li><a routerLink="/logowanie-component" routerLinkActive="active" ariaCurrentWhenActive="page"
-        class="login-link">Zaloguj się</a></li>
+        @if(userId){
+         
+            <li><a routerLink="/konto-wolontariusza">Twoje konto</a></li>
+            <li> <a (click)="logout()" style="cursor:pointer">Wyloguj</a></li>
+       
+        }
+        @else {
+          <li>
+            <a routerLink="/logowanie-component">Zaloguj się</a>
+          </li>
+        }
+       
+    
+       
+       
   </ul>
 </nav>
 <hr>

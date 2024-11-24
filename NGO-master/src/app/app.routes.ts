@@ -10,18 +10,19 @@ import { KontaAministratorComponent } from './konta-aministrator/konta-aministra
 import { StronaAkcjiComponent } from './strona-akcji/strona-akcji.component';
 import { DodajAkcjeComponent } from './dodaj-akcje/dodaj-akcje.component';
 import { EdytujAkcjeComponent } from './edytuj-akcje/edytuj-akcje.component';
-
+import { AuthGuard } from './auth.guard';
  export  const routes: Routes = [
     { path: '', component: BlogAkcjiComponent }, 
     { path: 'szczegóły-akcji/:id', component: StronaAkcjiComponent },  
     { path: 'kalendarz-akcji-component', component: KalendarzAkcjiComponent },
     { path: 'rejestracja-component', component: RejestracjaComponent },  
     { path: 'logowanie-component', component: LogowanieComponent },  
-    { path: 'konto-wolontariusza', component: KontoWolontariuszComponent },
-    { path: 'akcje-wolontariusza', component: AkcjeWolontariuszComponent },
-    { path: 'akcje-administratora', component: AkcjeAdministratorComponent },  
-    { path: 'konta-administrator', component: KontaAministratorComponent },  
+    { path: 'konto-wolontariusza', component: KontoWolontariuszComponent ,canActivate: [AuthGuard]},
+    { path: 'akcje-wolontariusza', component: AkcjeWolontariuszComponent,canActivate: [AuthGuard] },
+    { path: 'akcje-administratora', component: AkcjeAdministratorComponent,canActivate: [AuthGuard] },  
+    { path: 'konta-administrator', component: KontaAministratorComponent,canActivate: [AuthGuard] },  
     { path: 'dodaj-akcje', component: DodajAkcjeComponent },
-    { path: 'edytuj-akcje/:id', component: EdytujAkcjeComponent } 
+    { path: 'edytuj-akcje/:id', component: EdytujAkcjeComponent },
+    { path: '**', redirectTo: 'logowanie-component' }
    ];
    //

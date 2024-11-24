@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, switchMap } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 // Interfejs User
@@ -37,6 +37,7 @@ export interface Event {
 })
 
 export class EventService {
+  private apiUrl = 'http://localhost:3000';
   private eventsUrl = 'http://localhost:3000/api/events'; // Endpoint API
   private groupsUrl = 'groups';
   private eventsSubject = new BehaviorSubject<Event[]>([]); // Strumień wydarzeń
@@ -70,8 +71,56 @@ export class EventService {
   // Aktualizacja wydarzenia
   updateEvent(eventId: number, eventData: any): Observable<Event> {
     return this.http.put<Event>(`http://localhost:3000/api/events/${eventId}`, eventData);
-  } 
+  }
+
+  // Zapisz użytkownika na wydarzenie 
+  joinEvent(userId: number, eventId: number): Observable<any> {
+    // Sprawdzamy, czy użytkownik nie jest już zapisany na dane wydarzenie
+    return this.http.get<any>(`${this.apiUrl}/users/${userId}`).pipe(
+      tap(user => {
+        if (user.events.includes(eventId)) {
+          alert('Już jesteś zapisany na to wydarzenie!');
+          return;
+        }
+        user.events.push(eventId);
+        this.http.put(`${this.apiUrl}/users/${userId}`, user).subscribe();
+        alert('Zapisano na wydarzenie!');
+        // Pobieramy dane wydarzenia
+        this.http.get<any>(`${this.apiUrl}/api/events/${eventId}`).subscribe(event => {
+          if (event.seats > 0) {
+            // Zmniejszamy liczbę dostępnych miejsc
+            event.seats -= 1;
+            // Zaktualizowanie wydarzenia w backendzie
+            this.http.put(`${this.apiUrl}/api/events/${eventId}`, event).subscribe();
+          } else {
+            alert('Brak dostępnych miejsc!');
+          }
+        });
+      })
+    );
+  }
+  removeEvent(userId: number, eventId: number): Observable<any> {
+    // Pobieramy użytkownika
+    return this.http.get<any>(`${this.apiUrl}/users/${userId}`).pipe(
+      tap(user => {
+        // Usuwamy eventId z listy zapisanych wydarzeń
+        user.events = user.events.filter((id: number) => id !== eventId);
+        
+        // Zapisujemy zaktualizowanego użytkownika w backendzie
+        this.http.put(`${this.apiUrl}/users/${userId}`, user).subscribe();
+        
+        // Pobieramy dane wydarzenia
+        this.http.get<any>(`${this.apiUrl}/api/events/${eventId}`).subscribe(event => {
+          // Zwiększamy liczbę dostępnych miejsc
+          event.seats += 1;
+          // Zaktualizowanie wydarzenia w backendzie
+          this.http.put(`${this.apiUrl}/api/events/${eventId}`, event).subscribe();
+        });
+      })
+    );
+  }
 }
+
 
 // Stary kod
 /*export class EventService {

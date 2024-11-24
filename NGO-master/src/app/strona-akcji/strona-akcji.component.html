@@ -23,17 +23,19 @@
             <h3>{{eventDetails?.title}}</h3>
             <p class="card-subtitle mb-2 text-muted">{{eventDetails?.date}},<br>{{eventDetails?.location}}</p>
           </div>
-          <button class="btn btn-primary btn-sm udz">Weź Udział!</button>
+          <button  class="btn btn-primary btn-sm udz" (click)="joinEvent()" [disabled]="!isLoggedIn">
+            Weź Udział!
+          </button>
         </div>
         <hr>
         <h3>Dostępne godziny</h3>
         <h6 class="mb-2">Lista podstawowa:</h6>
         <div class="d-flex flex-wrap gap-2 mb-3 justify-content-center">
-          <button type="button" class="btn btn-secondary">
+          <div  class="btn btn-primary">
               {{eventDetails?.time}}
               <br>
               <small class="text-white">Liczba miejsc: {{eventDetails?.seats}}</small>
-          </button>
+          </div>
           </div>
          <!-- Dodać automatyczne generowanie przycisków na podstawie danych -->
           <!-- Lista Podstawowa -->

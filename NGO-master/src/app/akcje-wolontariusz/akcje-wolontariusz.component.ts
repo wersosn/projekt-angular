@@ -4,7 +4,7 @@ import { RouterOutlet,RouterLink,RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-akcje-wolontariusz',
   standalone: true,
-  imports: [AkcjaWolontariuszComponent,RouterOutlet,RouterLink,RouterLinkActive],
+  imports: [AkcjaWolontariuszComponent,RouterLink,RouterLinkActive],
   templateUrl: './akcje-wolontariusz.component.html',
   styleUrl: './akcje-wolontariusz.component.scss'
 })

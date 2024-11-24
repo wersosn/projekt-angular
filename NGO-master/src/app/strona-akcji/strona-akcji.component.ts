@@ -16,21 +16,27 @@ import { RouterModule } from '@angular/router';  // Zaimportuj RouterModule
 })
 
 export class StronaAkcjiComponent implements OnInit {
+
+  isLoggedIn: boolean = false; // Zmienna sprawdzająca, czy użytkownik jest zalogowany
+
   id: number = 0;
   eventDetails: any | null = null;
   constructor(private route: ActivatedRoute, private router: Router, private eventService: EventService) { }
 
   ngOnInit() {
+    this.isLoggedIn = !!localStorage.getItem('userId');
     this.route.paramMap.subscribe(params => {
       this.id = Number(params.get('id'));
       this.loadEventDetails(this.id);
     });
+
+
   }
 
   loadEventDetails(id: number) {
     this.eventService.getEventById(id).subscribe({
       next: event => {
-        this.eventDetails = event; 
+        this.eventDetails = event;
         console.log('Szczegóły:', this.eventDetails);
       },
       error: err => console.error('Error podczas pobierania szczegółów:', err)
@@ -40,27 +46,34 @@ export class StronaAkcjiComponent implements OnInit {
   back() {
     this.router.navigate(['', { from: 'StronaAkcjiComponent' }]);
   }
+
+
+  // Metoda do zapisywania na akcje
+  //TODO DODAĆ ODŚWIERZANIE LICZNIKA 
+  joinEvent(): void {
+    if (this.isLoggedIn) {
+      const userId = localStorage.getItem('userId');
+      const eventId = this.eventDetails.id;
+
+      if (userId) {
+        this.eventService.joinEvent(+userId, eventId).subscribe({
+          next: () => {
+
+            this.ngOnInit(); // Odśwież dane po zapisaniu
+
+          },
+          error: (err) => {
+            console.error('Błąd zapisu na wydarzenie:', err);
+            alert('Wystąpił problem przy zapisywaniu.');
+          }
+        });
+
+      }
+    } else {
+      alert('Musisz być zalogowany, aby zapisać się na wydarzenie!');
+    }
+
+
+  }
+
 }
-
-  /*actions=[
-    {
-      id: 1,
-      title: 'Akcja 1',
-      location: 'Kraków',
-      date: '2023-11-24',
-      basicList: [
-        { hour: '9:00', spots: 5 },
-        { hour: '12:00', spots: 3 },
-        { hour: '15:00', spots: 2 },
-        { hour: '18:00', spots: 1 },
-      ],
-      reserveList: [
-        { hour: '9:00', spots: 2 },
-        { hour: '12:00', spots: 4 },
-        { hour: '15:00', spots: 3 },
-        { hour: '18:00', spots: 0 },
-      ],
-      shortDescription: 'Krótki opis akcji 1.',
-      longDescription: 'Długi opis akcji 1. Szczegółowe informacje o wydarzeniu.',
-    },*/
-

@@ -1,0 +1,104 @@
+[
+  {
+    "id": 1,
+    "login": "test",
+    "password": "haslo123",
+    "name": "Jan",
+    "surname": "Kowalski",
+    "email": "jan.kowalski@example.com",
+    "phone": "123456789",
+    "address": "ul. Przykładowa 1, 00-001 Warszawa",
+    "gender": "M",
+    "events": [
+      1732357477256
+    ]
+  },
+  {
+    "id": 2,
+    "login": "test2",
+    "password": "test2",
+    "name": "Anna",
+    "surname": "Nowak",
+    "email": "anna.nowak@example.com",
+    "phone": "987654321",
+    "address": "ul. Inna 2, 00-002 Kraków",
+    "gender": "F",
+    "events": [
+      1732362385388,
+      1732357477256,
+      1732434632501
+    ]
+  },
+  {
+    "id": 3,
+    "login": "fdsf",
+    "password": "123213dsfsdf",
+    "name": "dsadsad",
+    "surname": "sdadasds",
+    "email": "wp@pl",
+    "phone": "123456789",
+    "address": "sdadsd",
+    "gender": "M",
+    "events": []
+  },
+  {
+    "id": 4,
+    "login": "dasdasd",
+    "password": "123213dsada",
+    "name": "asdasd",
+    "surname": "dsadasdass",
+    "email": "nwm@wp.pl",
+    "phone": "123456789",
+    "address": "sdadsad",
+    "gender": "M",
+    "events": []
+  },
+  {
+    "id": 5,
+    "login": "rwesdafsdcx",
+    "password": "123213sdads",
+    "name": "123",
+    "surname": "sadasd",
+    "email": "sda@wp.pl",
+    "phone": "123456789",
+    "address": "sdasd",
+    "gender": "F",
+    "events": []
+  },
+  {
+    "id": 6,
+    "login": "dsad",
+    "password": "dasdasdas",
+    "name": "tsdad",
+    "surname": "sdads",
+    "email": "1wp@wp.pl",
+    "phone": "123456789",
+    "address": "dsadas",
+    "gender": "M",
+    "events": []
+  },
+  {
+    "id": 7,
+    "login": "dsadas",
+    "password": "dsadasd",
+    "name": "sadas",
+    "surname": "dsadasd",
+    "email": "wp@pl",
+    "phone": "123456789",
+    "address": "dsad",
+    "gender": "M",
+    "events": []
+  },
+  {
+    "id": 8,
+    "login": "rwesdadsadas",
+    "password": "123213dsad",
+    "name": "wdad",
+    "surname": "wdadw",
+    "email": "wp@pl",
+    "phone": "123456789",
+    "address": "ssss",
+    "gender": "M",
+    "events": []
+  }
+]
