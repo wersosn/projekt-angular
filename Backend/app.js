@@ -192,6 +192,7 @@ const saveUsers = (users) => {
 
 // POST do edycji użytkownika
 app.put('/users/:id', (req, res) => {
+  let users = loadUsers();
   const userId = parseInt(req.params.id, 10);  // Pobranie ID użytkownika z parametru
   const updatedUser = req.body;  // Pobranie danych z ciała żądania
 
