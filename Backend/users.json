@@ -99,6 +99,23 @@
     "phone": "123456789",
     "address": "ssss",
     "gender": "M",
-    "events": []
+    "events": [
+      1732734330374
+    ]
+  },
+  {
+    "id": 9,
+    "login": "XXX",
+    "password": "Abc123!",
+    "name": "W",
+    "surname": "S",
+    "email": "ws@gmail.com",
+    "phone": "999999999",
+    "address": "xx",
+    "gender": "F",
+    "events": [
+      1732362385388,
+      1732734330374
+    ]
   }
 ]

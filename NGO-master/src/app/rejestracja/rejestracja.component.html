@@ -1,63 +1,88 @@
 <div class="container-cols-12" style="display: flex; justify-content: center; align-items: center;">
-    <div class="register-container">
-      <h1 class="text-center mb-4">Podaj dane do rejestracji</h1>
-      <form [formGroup]="registerForm" (ngSubmit)="register()">
-        <div class="row mb-3">
-          <div class="col-md-6">
-            <label for="login" class="form-label">Login</label>
-            <input type="text" class="form-control" id="login" formControlName="login" required>
-          </div>
-          <div class="col-md-6">
-            <label for="password" class="form-label">Hasło</label>
-            <input type="password" class="form-control" id="password" formControlName="password" required>
-          </div>
-        </div>
-  
-        <div class="row mb-3">
-          <div class="col-md-6">
-            <label for="firstName" class="form-label">Imię</label>
-            <input type="text" class="form-control" id="firstName" formControlName="firstName" required>
-          </div>
-          <div class="col-md-6">
-            <label for="lastName" class="form-label">Nazwisko</label>
-            <input type="text" class="form-control" id="lastName" formControlName="lastName" required>
+  <div class="register-container">
+    <h1 class="text-center mb-4">Podaj dane do rejestracji</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="login" class="form-label">Login</label>
+          <input type="text" class="form-control" id="login" formControlName="login" required>
+          <div class="text-danger" *ngIf="registerForm.get('login')?.invalid && registerForm.get('login')?.touched">
+            <small *ngIf="registerForm.get('login')?.errors?.['required']">Login jest wymagany.</small>
+            <small *ngIf="registerForm.get('login')?.errors?.['minlength']">Login musi mieć co najmniej 3 znaki.</small>
           </div>
         </div>
-  
-        <div class="row mb-3">
-          <div class="col-md-6">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" formControlName="email" required>
-          </div>
-          <div class="col-md-6">
-            <label for="phone" class="form-label">Telefon</label>
-            <input type="tel" class="form-control" id="phone" formControlName="phone" required>
+        <div class="col-md-6">
+          <label for="password" class="form-label">Hasło</label>
+          <input type="password" class="form-control" id="password" formControlName="password" required>
+          <div class="text-danger" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+            <small *ngIf="registerForm.get('password')?.errors?.['required']">Hasło jest wymagane.</small>
+            <small *ngIf="registerForm.get('password')?.errors?.['minlength']">Hasło musi mieć co najmniej 6 znaków.</small>
           </div>
         </div>
-  
-        <div class="mb-3">
-          <label for="address" class="form-label">Adres</label>
-          <input type="text" class="form-control" id="address" formControlName="address" required>
-        </div>
-  
-        <div class="row mb-3 ss">
-          <label class="col-4 form-label">Płeć</label>
-          <div class="col-8 d-flex">
-            <div class="form-check me-3">
-              <input class="form-check-input" type="radio" formControlName="gender" value="M" required>
-              <label class="form-check-label" for="genderM">M</label>
-            </div>
-            <div class="form-check m">
-              <input class="form-check-input" type="radio" formControlName="gender" value="F" required>
-              <label class="form-check-label" for="genderF">F</label>
-            </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="firstName" class="form-label">Imię</label>
+          <input type="text" class="form-control" id="firstName" formControlName="firstName" required>
+          <div class="text-danger" *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched">
+            <small>Imię jest wymagane.</small>
           </div>
         </div>
-  
-        <button type="submit" class="btn btn-primary w-100" [disabled]="registerForm.invalid">Zarejestruj się</button>
-  
-      
-      </form>
-    </div>
+        <div class="col-md-6">
+          <label for="lastName" class="form-label">Nazwisko</label>
+          <input type="text" class="form-control" id="lastName" formControlName="lastName" required>
+          <div class="text-danger" *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched">
+            <small>Nazwisko jest wymagane.</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email" required>
+          <div class="text-danger" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+            <small *ngIf="registerForm.get('email')?.errors?.['required']">Email jest wymagany.</small>
+            <small *ngIf="registerForm.get('email')?.errors?.['email']">Wprowadź poprawny adres email.</small>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="phone" class="form-label">Telefon</label>
+          <input type="tel" class="form-control" id="phone" formControlName="phone" required>
+          <div class="text-danger" *ngIf="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched">
+            <small *ngIf="registerForm.get('phone')?.errors?.['required']">Telefon jest wymagany.</small>
+            <small *ngIf="registerForm.get('phone')?.errors?.['pattern']">Numer telefonu musi mieć 9 cyfr.</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="address" class="form-label">Adres</label>
+        <input type="text" class="form-control" id="address" formControlName="address" required>
+        <div class="text-danger" *ngIf="registerForm.get('address')?.invalid && registerForm.get('address')?.touched">
+          <small>Adres jest wymagany.</small>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label class="col-4 form-label">Płeć</label>
+        <div class="col-8 d-flex">
+          <div class="form-check me-3">
+            <input class="form-check-input" type="radio" formControlName="gender" value="M" required>
+            <label class="form-check-label" for="genderM">M</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" formControlName="gender" value="F" required>
+            <label class="form-check-label" for="genderF">F</label>
+          </div>
+        </div>
+        <div class="text-danger" *ngIf="registerForm.get('gender')?.invalid && registerForm.get('gender')?.touched">
+          <small>Wybór płci jest wymagany.</small>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100" [disabled]="registerForm.invalid">Zarejestruj się</button>
+    </form>
   </div>
-  
+</div>
