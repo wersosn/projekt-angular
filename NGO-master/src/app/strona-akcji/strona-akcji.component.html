@@ -60,10 +60,11 @@
             {{eventDetails?.description}}
           </p>
           <!-- Przycisk z routerLink -->
-          <button class="btn btn-primary w-100" [routerLink]="['/edytuj-akcje', eventDetails?.id]" routerLinkActive="active" ariaCurrentWhenActive="page">
-            Edytuj wydarzenie
-          </button>
-
+           @if(isLoggedIn) {
+            <button class="btn btn-primary w-100" [routerLink]="['/edytuj-akcje', eventDetails?.id]" routerLinkActive="active" ariaCurrentWhenActive="page">
+              Edytuj wydarzenie
+            </button>
+           }
       </div>
 
   </div>
