@@ -1,0 +1,26 @@
+<!--@for(zapis of Zapisy; track trackZapisId){ -->
+
+<div class="container mt-3">
+    <div>
+        <div class="action-box col-12">
+            <div class="action-details col-2">
+                <h3 style="font-weight: 700;">{{ event.title }}</h3>
+                <p><strong>Data:</strong> {{ event.date }}</p>
+                <p><strong>Lokalizacja:</strong> {{ event.location }}</p>
+            </div>
+            <div class="col-3">
+                <p><strong>Opis:</strong> {{ event.description }}</p>
+            </div>
+            <div class="col-3 text-center">
+                <p>Lista {{ event.list }}:</p>
+                <span class="action-time">{{ event.time }}</span>
+            </div>
+            <div class="action-buttons col-3">
+              
+                <button class="btn" (click)="cancelEvent(event.id)">Zrezygnuj</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- } -->

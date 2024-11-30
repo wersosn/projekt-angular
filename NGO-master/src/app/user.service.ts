@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 interface User {
   id: number;
+  role: string;
   login: string;
   password: string;
   name: string;

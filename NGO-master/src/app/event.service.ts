@@ -3,23 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, switchMap } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-// Interfejs User
-export interface User {
-  id: number;
-  name: string;
-  surname: string;
-}
-
-// Interfejs Group
-export interface Group {
-  id: number;
-  type: string;
-  name: string;
-  size: number;
-  time: string;
-  users: User[];
-}
-
 // Interfejs Event
 export interface Event {
   id: number;
@@ -29,7 +12,6 @@ export interface Event {
   time: string;
   location: string;
   seats: number;
-  groups: Group[];
 }
 
 @Injectable({
@@ -39,7 +21,6 @@ export interface Event {
 export class EventService {
   private apiUrl = 'http://localhost:3000';
   private eventsUrl = 'http://localhost:3000/api/events'; // Endpoint API
-  private groupsUrl = 'groups';
   private eventsSubject = new BehaviorSubject<Event[]>([]); // Strumień wydarzeń
   events$ = this.eventsSubject.asObservable(); // Subskrybowalne dane
 

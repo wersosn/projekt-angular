@@ -1,0 +1,98 @@
+<div class="container mt-3">
+    <div class="action-box col-12">
+        <div class="action-details col-2">
+            <h3 style="font-weight: 700;">{{ event.title }}</h3>
+            <p><strong>Data:</strong> {{ event.date }}</p>
+            <p><strong>Lokalizacja:</strong> {{ event.location }}</p>
+            <button class="btn" [routerLink]="['/szczegóły-akcji', event?.id]" routerLinkActive="active" ariaCurrentWhenActive="page">Szczegóły Akcji</button>
+            <button class="btn" [routerLink]="['/edytuj-akcje', event?.id]" routerLinkActive="active" ariaCurrentWhenActive="page">Edytuj Akcje</button>
+        </div>
+        <div class="col-3">
+            <p><strong>Opis:</strong> {{ event.description }}</p>
+        </div>
+        <div class="action-buttons col-2">
+           
+            <button class="btn" >Pokaż listy uczestników</button>
+            <button class="btn" >Dodaj uczestnika do listy</button>
+            <button class="btn" >Usuń uczestnika z listy</button>
+            
+        </div>
+         <!-- Lista Podstawowa -->
+        <div class="col-4 text-center">
+            <h6 class="mb-2">Lista podstawowa:</h6>
+            <div class="d-flex flex-wrap gap-2 mb-3 justify-content-center">
+                
+                @if(event.seats <= 0){
+                    <button
+                    type="button"
+                    class="btn btn-secondary"
+                    >
+                    {{ event.time }}
+                    <br />
+                    <small class="text-white">Liczba miejsc: {{ event.seats }}</small>
+                  </button>
+                } @else {
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                >
+                    {{ event.time }}
+                    <br />
+                    <small class="text-white">Liczba miejsc: {{ event.seats }}</small>
+                </button>
+                }
+                <!--
+               @for(czas of zapis.basicList;track czas.id){
+                @if(czas.spots=== 0){
+                    <button
+                    type="button"
+                    class="btn btn-secondary"
+                    >
+                    {{ czas.hour }}
+                    <br />
+                    <small class="text-white">Liczba miejsc: {{ czas.spots }}</small>
+                  </button>
+                }
+                @else if(czas.spots>0){
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                >
+                    {{ czas.hour }}
+                    <br />
+                    <small class="text-white">Liczba miejsc: {{ czas.spots }}</small>
+                </button>
+                }
+               } -->
+            </div>
+            <!-- Lista Rezerwowa
+            <h6 class="mb-2">Lista rezerwowa:</h6>
+            <div class="d-flex flex-wrap gap-2 mb-3 justify-content-center">
+                @for(czas of zapis.reserveList;track czas.id){
+                    @if(czas.spots=== 0){
+                        <button
+                        type="button"
+                        class="btn btn-secondary"
+                        >
+                        {{ czas.hour }}
+                        <br />
+                        <small class="text-white">Liczba miejsc: {{ czas.spots }}</small>
+                      </button>
+                    }
+                    @else if(czas.spots>0){
+                    <button
+                    type="button"
+                    class="btn btn-primary"
+                  >
+                    {{ czas.hour }}
+                    <br />
+                    <small class="text-white">Liczba miejsc: {{ czas.spots }}</small>
+                  </button>
+                }
+                   }
+            </div> -->
+           
+    </div>
+     
+    </div>
+</div>

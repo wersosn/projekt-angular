@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "role": "administrator",
     "login": "test",
     "password": "haslo123",
     "name": "Jan",
@@ -10,11 +11,13 @@
     "address": "ul. Przykładowa 1, 00-001 Warszawa",
     "gender": "M",
     "events": [
-      1732357477256
+      1732362385388,
+      1732434632501
     ]
   },
   {
     "id": 2,
+    "role": "user",
     "login": "test2",
     "password": "test2",
     "name": "Anna",
