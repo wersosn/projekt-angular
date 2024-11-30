@@ -1,0 +1,7 @@
+@if(user) {
+    <label>{{user.id}} | {{user.name}} {{user.surname}}</label>
+} @else {
+    <label>-1 | - -</label>
+}
+
+<button (click)="addUserToEvent()">dodaj</button>

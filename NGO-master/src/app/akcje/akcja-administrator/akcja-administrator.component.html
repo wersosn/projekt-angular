@@ -12,9 +12,9 @@
         </div>
         <div class="action-buttons col-2">
            
-            <button class="btn" >Pokaż listy uczestników</button>
-            <button class="btn" >Dodaj uczestnika do listy</button>
-            <button class="btn" >Usuń uczestnika z listy</button>
+            <button class="btn" (click)="toggleList()">Pokaż listy uczestników</button>
+            <button class="btn" (click)="toggleAdd()">Dodaj uczestnika do listy</button>
+            <button class="btn" (click)="toggleRemove()">Usuń uczestnika z listy</button>
             
         </div>
          <!-- Lista Podstawowa -->
@@ -92,7 +92,28 @@
                    }
             </div> -->
            
+        </div>
+
     </div>
-     
-    </div>
+    @if(listVisible) {
+        <div class="action-box col-12">
+            <lista-uczestnikow class="col-2" [event]="event"></lista-uczestnikow>
+        </div>
+    }
+    @if(removeVisible) {
+        <div class="action-box col-12">
+            <szukaj-uczestnika (findUserEvent)="findUsers($event)"></szukaj-uczestnika>
+            @for(user of users; track trackUsersId()) {
+                <usun-uczestnika [user]="user" [event]="event"></usun-uczestnika>
+            }
+        </div>
+    }
+    @if(addVisible) {
+        <div class="action-box col-12">
+            <szukaj-uczestnika (findUserEvent)="findUsers($event)"></szukaj-uczestnika>
+            @for(user of users; track trackUsersId()) {
+                <dodaj-uczestnika [user]="user" [event]="event"></dodaj-uczestnika>
+            }
+        </div>
+    }
 </div>

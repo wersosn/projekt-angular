@@ -8,9 +8,9 @@ import { EventService } from '../../event.service';
   styleUrl: './akcja.component.scss'
 })
 export class AkcjaComponent{
-  Zapisy: any[] = []; // Tablica akcji, w których bierze udział użytkownik
+  //Zapisy: any[] = []; // Tablica akcji, w których bierze udział użytkownik
   @Input() event: any;
-  constructor(private eventService: EventService) {}
+  constructor(protected eventService: EventService) {}
   /*
   ngOnInit(): void {
     // Pobierz ID użytkownika z lokalnego storage lub sesji 
