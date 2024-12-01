@@ -60,9 +60,12 @@
             {{eventDetails?.description}}
           </p>
           <!-- Przycisk z routerLink -->
-           @if(isLoggedIn) {
+           @if(isLoggedIn && userRole === "administrator") {
             <button class="btn btn-primary w-100" [routerLink]="['/edytuj-akcje', eventDetails?.id]" routerLinkActive="active" ariaCurrentWhenActive="page">
               Edytuj wydarzenie
+            </button><br>
+            <button class="btn btn-primary w-100 btn-danger" (click)="deleteEvent(eventDetails?.id)">
+              Usuń wydarzenie
             </button>
            }
       </div>

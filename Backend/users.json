@@ -121,5 +121,34 @@
       1732734330374,
       1732357477256
     ]
+  },
+  {
+    "id": 10,
+    "role": "user",
+    "login": "test2uwu",
+    "password": "haslo123",
+    "name": "t",
+    "surname": "s",
+    "email": "e@e.com",
+    "phone": "888888888",
+    "address": "ppp",
+    "gender": "M",
+    "events": []
+  },
+  {
+    "id": 11,
+    "role": "administrator",
+    "login": "test2uwu2",
+    "password": "haslo123",
+    "name": "aaa",
+    "surname": "aaa",
+    "email": "basianowak@abc.com",
+    "phone": "777777777",
+    "address": "vvvvv",
+    "gender": "F",
+    "events": [
+      1732434632501,
+      1733061699952
+    ]
   }
 ]

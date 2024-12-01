@@ -30,4 +30,7 @@ export class UserService {
     return this.http.get<User>(`${this.userUrl}/${userId}`);
   }
   
+  getUserDetails(userId: string): Observable<{ id: number; role: string; login: string; email: string }> {
+    return this.http.get<{ id: number; role: string; login: string; email: string }>(`${this.userUrl}/users/${userId}`);
+  }
 }

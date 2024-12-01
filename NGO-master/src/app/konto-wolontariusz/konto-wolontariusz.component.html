@@ -6,7 +6,7 @@
             <a routerLink="/konto-wolontariusza" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn btn-primary kon">Konto</a>
         </div>
     </div>
-    <h1 class="text-center mb-4">Twoje konto wolontariusza</h1>
+    <h1 class="text-center mb-4">Twoje konto</h1>
 
     <!-- Główna sekcja -->
     <div class="karta">
@@ -50,5 +50,9 @@
                 
             </div>
         </div>
+        @if(userData.role == 'administrator') {
+            <hr>
+            <button class="btn btn-primary w-100" [routerLink]="['/dodaj-akcje']" routerLinkActive="active" ariaCurrentWhenActive="page">Dodaj akcje</button>
+        }
     </div>
 </div>

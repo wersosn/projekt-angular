@@ -8,7 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 @Component({
   selector: 'app-blog-akcji',
   standalone: true,
-  imports: [ActionCardComponent, CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './blog-akcji.component.html',
   styleUrl: './blog-akcji.component.scss'
 })

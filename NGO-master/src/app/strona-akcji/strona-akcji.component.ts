@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { EventService, Event } from '../event.service';
 import { RouterModule } from '@angular/router';  // Zaimportuj RouterModule
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-strona-akcji',
@@ -18,19 +19,21 @@ import { RouterModule } from '@angular/router';  // Zaimportuj RouterModule
 export class StronaAkcjiComponent implements OnInit {
 
   isLoggedIn: boolean = false; // Zmienna sprawdzająca, czy użytkownik jest zalogowany
-
+  userRole: string | null = null;
   id: number = 0;
   eventDetails: any | null = null;
-  constructor(private route: ActivatedRoute, private router: Router, private eventService: EventService) { }
+
+  constructor(private route: ActivatedRoute, private router: Router, private eventService: EventService, private userService: UserService) { }
 
   ngOnInit() {
-    this.isLoggedIn = !!localStorage.getItem('userId');
+    const userId = localStorage.getItem('userId');
+    this.isLoggedIn = !!userId;
+    this.userRole = this.getUserRole();
+    console.log("Rola użytkownika: ", this.userRole);
     this.route.paramMap.subscribe(params => {
       this.id = Number(params.get('id'));
       this.loadEventDetails(this.id);
     });
-
-
   }
 
   loadEventDetails(id: number) {
@@ -47,6 +50,9 @@ export class StronaAkcjiComponent implements OnInit {
     this.router.navigate(['', { from: 'StronaAkcjiComponent' }]);
   }
 
+  getUserRole(): string | null {
+    return localStorage.getItem('userRole');
+  }
 
   // Metoda do zapisywania na akcje
   //TODO DODAĆ ODŚWIERZANIE LICZNIKA 
@@ -72,8 +78,21 @@ export class StronaAkcjiComponent implements OnInit {
     } else {
       alert('Musisz być zalogowany, aby zapisać się na wydarzenie!');
     }
+  }
 
-
+  deleteEvent(eventId: number) {
+    if (confirm('Czy na pewno chcesz usunąć to wydarzenie?')) {
+      this.eventService.deleteEvent(eventId).subscribe({
+        next: (response) => {
+          alert('Wydarzenie zostało usunięte.');
+          this.router.navigate(['']);  // Przekierowanie na stronę główną lub listę wydarzeń
+        },
+        error: (err) => {
+          console.error('Błąd podczas usuwania wydarzenia:', err);
+          alert('Wystąpił błąd podczas usuwania wydarzenia.');
+        }
+      });
+    }
   }
 
 }

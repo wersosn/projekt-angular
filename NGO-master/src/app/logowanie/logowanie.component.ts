@@ -32,6 +32,7 @@ export class LogowanieComponent {
           // Zapisz dane użytkownika w localStorage
           localStorage.setItem('userId', response.user.id); // Zapisz ID użytkownika
           localStorage.setItem('userLogin', response.user.login); // Zapisz login użytkownika
+          localStorage.setItem('userRole', response.user.role);
         
           // Przekierowanie po zalogowaniu
           this.router.navigate(['/konto-wolontariusza']).then(() => {

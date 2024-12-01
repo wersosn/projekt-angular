@@ -12,6 +12,7 @@ const usersFilePath = './users.json';
 const loadEvents = () => {
   try {
     const data = fs.readFileSync(eventsFilePath, 'utf-8');
+    console.log(data);
     return JSON.parse(data);
   } catch (err) {
     console.error('Error reading events file:', err);
@@ -62,9 +63,13 @@ app.post('/register', (req, res) => {
     }
 
     const users = JSON.parse(data); // Parse the data to get the existing users
-    const existingUser = users.find(user => user.login === newUser.login);
-    if (existingUser) {
+    const existingLogin = users.find(user => user.login === newUser.login);
+    const existingEmail = users.find(user => user.email === newUser.email);
+    if (existingLogin) {
       return res.status(400).json({ message: 'Użytkownik o tym loginie już istnieje.' });
+    }
+    if (existingEmail) {
+      return res.status(400).json({ message: 'Email został już użyty.' });
     }
 
     // Automatyczne przypisanie ID
@@ -72,6 +77,7 @@ app.post('/register', (req, res) => {
 
     const userToAdd = {
       id: newId,
+      role: 'user',
       login: newUser.login,
       password: newUser.password,
       name: newUser.firstName,
@@ -119,7 +125,6 @@ app.get('/users/:id/events', (req, res) => {
 
   // Załaduj wszystkie wydarzenia
   const events = loadEvents();
-
   // Wybierz tylko te wydarzenia, których ID znajdują się w tablicy 'events' użytkownika
   const userEvents = events.filter(event => user.events.includes(event.id));
 
@@ -179,6 +184,50 @@ app.put('/api/events/:id', (req, res) => {
     res.status(404).send('Event not found edit');
   }
 });
+
+// Delete do usuwania wydarzenia
+app.delete('/api/events/:id', (req, res) => {
+  const eventId = parseInt(req.params.id, 10);
+
+  // Odczytujemy wydarzenia z pliku JSON
+  fs.readFile(eventsFilePath, (err, data) => {
+    if (err) {
+      console.error('Błąd odczytu pliku:', err);
+      return res.status(500).send('Błąd serwera');
+    }
+
+    let events = JSON.parse(data); // Wczytanie wydarzeń z pliku
+    const eventIndex = events.findIndex(event => event.id === eventId);
+
+    if (eventIndex === -1) {
+      return res.status(404).json({ message: 'Wydarzenie nie zostało znalezione.' });
+    }
+
+    // Usuwamy wydarzenie z tablicy
+    events.splice(eventIndex, 1);
+
+    // Zapisujemy zaktualizowaną tablicę wydarzeń do pliku
+    fs.writeFile(eventsFilePath, JSON.stringify(events, null, 2), (err) => {
+      if (err) {
+        console.error('Błąd zapisu pliku:', err);
+        return res.status(500).send('Błąd serwera');
+      }
+
+      // Po zapisaniu pliku, odświeżamy dane w pamięci
+      events = JSON.parse(fs.readFileSync(eventsFilePath, 'utf-8'));
+
+      // Wysyłamy odpowiedź, że wydarzenie zostało usunięte
+      res.status(200).json({ message: 'Wydarzenie zostało usunięte.' });
+
+      // Zaktualizowanie zmiennej `events` w pamięci backendu (można również zrobić to globalnie)
+      app.locals.events = events; // Przypisujemy zaktualizowane wydarzenia do lokalnej zmiennej
+
+      // Opcjonalnie - możesz również odświeżyć tablicę `events` w backendzie
+      console.log('Nowe wydarzenia po usunięciu:', events);
+    });
+  });
+});
+
 
 
 // Funkcja do zapisywania użytkowników do pliku

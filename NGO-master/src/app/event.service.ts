@@ -49,9 +49,17 @@ export class EventService {
   getEventById(id: number): Observable<Event> {
     return this.http.get<Event>(`${this.eventsUrl}/${id}`);
   }
+  // Pobierz wszystkie wydarzenia
+  getAllEvents(): Observable<any[]> {
+    return this.http.get<any[]>(`http://localhost:3000/api/events/`);
+  }
   // Aktualizacja wydarzenia
   updateEvent(eventId: number, eventData: any): Observable<Event> {
     return this.http.put<Event>(`http://localhost:3000/api/events/${eventId}`, eventData);
+  }
+  // Usuwanie wydarzenia całkowicie
+  deleteEvent(id: number): Observable<Event> {
+    return this.http.delete<Event>(`${this.apiUrl}/api/events/${id}`);
   }
 
   // Zapisz użytkownika na wydarzenie 
