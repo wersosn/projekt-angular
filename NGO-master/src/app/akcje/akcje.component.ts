@@ -24,16 +24,16 @@ export class AkcjeComponent implements OnInit {
     if (userId) {
       this.userService.getUserData(Number(userId)).subscribe(user => {
         this.role = user.role;
+        if(this.role == "administrator"){
+          this.eventService.getAllEvents().subscribe(events => {
+            this.events = events;
+          });
+        } else {
+          this.userEventService.getUserEvents(Number(userId)).subscribe(events => {
+            this.events = events; // Zapisz dane wydarzeń do zmiennej
+          });
+        }
       });
-
-      // TODO Naprawić wczytywanie wszystkich akcji dla administratora
-      if(this.role == "administrator"){
-        this.events = this.eventService.getEvents();
-      } else {
-        this.userEventService.getUserEvents(Number(userId)).subscribe(data => {
-          this.events = data; // Zapisz dane wydarzeń do zmiennej
-        });
-      }
     }
   } 
   
