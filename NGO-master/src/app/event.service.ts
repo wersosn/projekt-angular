@@ -59,7 +59,7 @@ export class EventService {
   }
   // Usuwanie wydarzenia całkowicie
   deleteEvent(id: number): Observable<Event> {
-    return this.http.delete<Event>(`${this.apiUrl}/api/events/${id}`);
+    return this.http.delete<Event>(`http://localhost:3000/api/events/${id}`);
   }
 
   // Zapisz użytkownika na wydarzenie 

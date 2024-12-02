@@ -34,6 +34,7 @@
   },
   {
     "id": 3,
+    "role": "user",
     "login": "fdsf",
     "password": "123213dsfsdf",
     "name": "dsadsad",
@@ -46,6 +47,7 @@
   },
   {
     "id": 4,
+    "role": "user",
     "login": "dasdasd",
     "password": "123213dsada",
     "name": "asdasd",
@@ -58,6 +60,7 @@
   },
   {
     "id": 5,
+    "role": "user",
     "login": "rwesdafsdcx",
     "password": "123213sdads",
     "name": "123",
@@ -70,6 +73,7 @@
   },
   {
     "id": 6,
+    "role": "user",
     "login": "dsad",
     "password": "dasdasdas",
     "name": "tsdad",
@@ -82,6 +86,7 @@
   },
   {
     "id": 7,
+    "role": "user",
     "login": "dsadas",
     "password": "dsadasd",
     "name": "sadas",
@@ -94,6 +99,7 @@
   },
   {
     "id": 8,
+    "role": "user",
     "login": "rwesdadsadas",
     "password": "123213dsad",
     "name": "wdad",
@@ -108,6 +114,7 @@
   },
   {
     "id": 9,
+    "role": "user",
     "login": "XXX",
     "password": "Abc123!",
     "name": "W",
@@ -148,7 +155,10 @@
     "gender": "F",
     "events": [
       1732434632501,
-      1733061699952
+      1733061699952,
+      1733128039142,
+      1732357477256,
+      1732362385388
     ]
   }
 ]

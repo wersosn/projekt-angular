@@ -188,47 +188,18 @@ app.put('/api/events/:id', (req, res) => {
 // Delete do usuwania wydarzenia
 app.delete('/api/events/:id', (req, res) => {
   const eventId = parseInt(req.params.id, 10);
+  const eventIndex = events.findIndex(e => e.id === eventId);
 
-  // Odczytujemy wydarzenia z pliku JSON
-  fs.readFile(eventsFilePath, (err, data) => {
-    if (err) {
-      console.error('Błąd odczytu pliku:', err);
-      return res.status(500).send('Błąd serwera');
-    }
-
-    let events = JSON.parse(data); // Wczytanie wydarzeń z pliku
-    const eventIndex = events.findIndex(event => event.id === eventId);
-
-    if (eventIndex === -1) {
-      return res.status(404).json({ message: 'Wydarzenie nie zostało znalezione.' });
-    }
-
-    // Usuwamy wydarzenie z tablicy
-    events.splice(eventIndex, 1);
-
-    // Zapisujemy zaktualizowaną tablicę wydarzeń do pliku
-    fs.writeFile(eventsFilePath, JSON.stringify(events, null, 2), (err) => {
-      if (err) {
-        console.error('Błąd zapisu pliku:', err);
-        return res.status(500).send('Błąd serwera');
-      }
-
-      // Po zapisaniu pliku, odświeżamy dane w pamięci
-      events = JSON.parse(fs.readFileSync(eventsFilePath, 'utf-8'));
-
-      // Wysyłamy odpowiedź, że wydarzenie zostało usunięte
-      res.status(200).json({ message: 'Wydarzenie zostało usunięte.' });
-
-      // Zaktualizowanie zmiennej `events` w pamięci backendu (można również zrobić to globalnie)
-      app.locals.events = events; // Przypisujemy zaktualizowane wydarzenia do lokalnej zmiennej
-
-      // Opcjonalnie - możesz również odświeżyć tablicę `events` w backendzie
-      console.log('Nowe wydarzenia po usunięciu:', events);
-    });
-  });
+  if (eventIndex !== -1) {
+    // Usuń wydarzenie z tablicy
+    const deletedEvent = events.splice(eventIndex, 1)[0];
+    saveEvents(events); // Zapisz zmienioną listę do pliku
+    console.log(events);
+    res.status(200).json(deletedEvent);
+  } else {
+    res.status(404).send('Event not found');
+  }
 });
-
-
 
 // Funkcja do zapisywania użytkowników do pliku
 const saveUsers = (users) => {

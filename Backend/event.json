@@ -6,7 +6,7 @@
     "date": "2024-11-23",
     "time": "16:24",
     "location": "Białystok",
-    "seats": 9
+    "seats": 8
   },
   {
     "id": 1732362385388,
@@ -15,7 +15,7 @@
     "date": "2024-12-08",
     "time": "23:00",
     "location": "Warszawa",
-    "seats": 62,
+    "seats": 61,
     "color": "green"
   },
   {

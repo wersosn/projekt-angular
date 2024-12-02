@@ -64,9 +64,8 @@ export class StronaAkcjiComponent implements OnInit {
       if (userId) {
         this.eventService.joinEvent(+userId, eventId).subscribe({
           next: () => {
-
+            this.router.navigate([`/szczegóły-akcji/${eventId}`]);
             this.ngOnInit(); // Odśwież dane po zapisaniu
-
           },
           error: (err) => {
             console.error('Błąd zapisu na wydarzenie:', err);
@@ -84,6 +83,7 @@ export class StronaAkcjiComponent implements OnInit {
     if (confirm('Czy na pewno chcesz usunąć to wydarzenie?')) {
       this.eventService.deleteEvent(eventId).subscribe({
         next: (response) => {
+          
           alert('Wydarzenie zostało usunięte.');
           this.router.navigate(['']);  // Przekierowanie na stronę główną lub listę wydarzeń
         },
