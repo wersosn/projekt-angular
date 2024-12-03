@@ -1,16 +1,24 @@
 services:
   frontend:
-    image: ngo_frontend
+    build: ./NGO-master/
+    #image: node:22-alpine
+    container_name: ngo_frontend
+    restart: always
     ports:
       - "4200:4200"
+    #working_dir: /frontend
     #networks:
     #  - front-tier
     #  - back-tier
 
   backend:
-    image: ngo_backend
+    build: ./Backend/
+    #image: node:22-alpine
+    container_name: ngo_backend
+    restart: always
     ports:
       - "3000:3000"
+    #working_dir: /backend
     #networks:
     #  - back-tier
 
