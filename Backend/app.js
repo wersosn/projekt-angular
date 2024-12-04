@@ -100,7 +100,14 @@ app.post('/register', (req, res) => {
   });
 });
 
-
+app.get('/users', (req, res) => {
+  const users = loadUsers();
+  if (users) {
+    res.status(200).json(users); // Zwrócenie wszystkich użytkowników
+  } else {
+    res.status(404).json({ message: 'Brak użytkowników' }); // Jeśli nie ma żadnego użytkownika
+  }
+});
 
 app.get('/users/:id', (req, res) => {
   const userId = parseInt(req.params.id, 10); // Pobieranie ID użytkownika z parametru URL
