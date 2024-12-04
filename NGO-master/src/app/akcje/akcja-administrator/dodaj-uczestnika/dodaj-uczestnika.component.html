@@ -1,4 +1,11 @@
-@if(user && !user.events.includes(event.id)) {
-    <label>{{user.id}} | {{user.name}} {{user.surname}}</label>
-    <button (click)="addUserToEvent()">dodaj</button>
-}
+<div class="user-list">
+  
+    @if(user && !user.events.includes(event.id)) {
+        <div class="user-item">
+            <span class="data-box">{{ user.id }}</span>
+            <span class="data-box">{{ user.name }}</span>
+            <span class="data-box">{{ user.surname }}</span>
+            <button (click)="addUserToEvent()">Dodaj</button>
+        </div>
+    }
+</div>

@@ -1,2 +1,10 @@
-<label>Podaj imię i nazwisko użytkownika: <input #name> <input #surname></label>
-<button (click)="findUserInEvent(name.value, surname.value)">Szukaj</button>
+<div class="search-container">
+    <label class="form-label text-center">Podaj imię i nazwisko użytkownika:<br> <label class="smallform-label text-center">Brak danych wyświetli wszystkie osoby</label></label>
+   
+    <div class="input-group">
+        <input type="text" class="form-control" #name placeholder="Imię">
+        <input type="text" class="form-control" #surname placeholder="Nazwisko">
+       
+    </div>
+    <button (click)="findUserInEvent(name.value, surname.value)">Szukaj</button>
+</div>

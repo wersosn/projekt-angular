@@ -15,7 +15,7 @@
  
     text-align: center;
 }
-.action-buttons .btn {
+.action-buttons .btn,.action-details .btn {
     display: block;
     width: 100%;
     margin-bottom: 10px;
@@ -26,7 +26,7 @@
     border-radius: 40px;
     padding: 10px;
 }
-.action-buttons .btn:hover {
+.action-buttons .btn:hover,.action-details .btn:hover {
     background-color: #cf1616;
 }
 .action-time {
