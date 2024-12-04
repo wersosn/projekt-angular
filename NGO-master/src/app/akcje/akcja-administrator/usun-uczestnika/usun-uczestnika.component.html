@@ -1,7 +1,4 @@
-@if(user) {
+@if(user && user.events.includes(event.id)) {
     <label>{{user.id}} | {{user.name}} {{user.surname}}</label>
-} @else {
-    <label>-1 | - -</label>
+    <button (click)="removeUserFromEvent()">usun</button>
 }
-
-<button (click)="removeUserFromEvent()">usun</button>

@@ -1,4 +1,6 @@
 
 <ul>
-    <li></li>
+    @for(user of users; track user.id) {
+        <li>{{user.id}} - {{user.name}} {{user.surname}}</li>
+    }
 </ul>
