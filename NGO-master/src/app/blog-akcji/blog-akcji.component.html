@@ -31,19 +31,21 @@ Sortuj wg daty ({{ sortDirectionDate === 'asc' ? 'Bliższe' : 'Dalsze' }})
 <hr>
 
 <div class="row">
-  <div class="col-md-4 mb-4" *ngFor="let action of events; trackBy: trackById">
-    <div class="card h-100">
-      <img src="https://sklep.lambda.pl/userdata/public/gfx/b5ba5b93de162471a3a920ca9f91bb5d.jpg" alt="Akcja obraz" class="card-image img-fluid" />
-      <div class="card-body">
-        <h2 class="card-title">{{ action.title }}</h2>
-        <p class="card-text">{{ action.date }} - {{ action.location }}</p>
-        
-        <div class="card-footer mt-3">
-          <p class="card-description">{{ action.description }}</p>
-          <p><strong>Miejsca:</strong> {{ action.seats }}</p>
-          <button class="btn btn-primary w-100" [routerLink]="['/szczegóły-akcji', action.id]" routerLinkActive="active" ariaCurrentWhenActive="page">Przejdź do akcji</button>
+  @for(event of events; track event.id){
+    <div class="col-md-4 mb-4" >
+      <div class="card h-100">
+        <img src="https://sklep.lambda.pl/userdata/public/gfx/b5ba5b93de162471a3a920ca9f91bb5d.jpg" alt="Akcja obraz" class="card-image img-fluid" />
+        <div class="card-body">
+          <h2 class="card-title">{{ event.title }}</h2>
+          <p class="card-text">{{ event.date }} - {{ event.location }}</p>
+          
+          <div class="card-footer mt-3">
+            <p class="card-description">{{ event.description }}</p>
+            <p><strong>Miejsca:</strong> {{ event.seats }}</p>
+            <button class="btn btn-primary w-100" [routerLink]="['/szczegóły-akcji', event.id]" routerLinkActive="active" ariaCurrentWhenActive="page">Przejdź do akcji</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  }
 </div>

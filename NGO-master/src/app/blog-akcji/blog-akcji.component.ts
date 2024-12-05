@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActionCardComponent } from './action-card/action-card.component';
-import { EventService } from '../event.service';
+import { EventService, Event } from '../event.service';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-blog-akcji',
@@ -13,11 +11,11 @@ import { RouterModule, Routes } from '@angular/router';
   styleUrl: './blog-akcji.component.scss'
 })
 export class BlogAkcjiComponent implements OnInit {
-  events: any[] = [];
-  allEvents: any[] = [];
+  events: Event[] = [];
+  allEvents: Event[] = [];
   isFiltered: boolean = false;
 
-  sortDirectionDate: 'asc' | 'desc' = 'asc';
+  sortDirectionDate:  'asc' | 'desc' = 'asc';
   sortDirectionSeats: 'asc' | 'desc' = 'asc';
 
   activeSortByDate: boolean = false;
@@ -29,6 +27,9 @@ export class BlogAkcjiComponent implements OnInit {
     this.fetchAndSetEvents();
   }
 
+  /**
+   * Pobiera listę wydarzeń przy użyciu EventService
+   */
   fetchAndSetEvents() {
     this.eventService.fetchEvents();
     this.eventService.events$.subscribe(events => {
@@ -70,10 +71,6 @@ export class BlogAkcjiComponent implements OnInit {
       this.events = this.allEvents.filter(event => event.seats > 0);
     }
     this.isFiltered = !this.isFiltered;
-  }
-
-  trackById(index: number, event: any): number {
-    return event.id;
   }
 }
 
