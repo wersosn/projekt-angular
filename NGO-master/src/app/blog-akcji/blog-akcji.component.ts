@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { EventService, Event } from '../event.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
+/**
+ * Komponent `BlogAkcji` wyświetla listę wydarzeń oraz umożliwia ich sortowanie i filtrowanie.
+ */
 @Component({
   selector: 'app-blog-akcji',
   standalone: true,
@@ -11,14 +13,19 @@ import { RouterModule } from '@angular/router';
   styleUrl: './blog-akcji.component.scss'
 })
 export class BlogAkcji implements OnInit {
+  /** @ignore */
   events: Event[] = [];
+  /** @ignore */
   allEvents: Event[] = [];
+  /** @ignore */
   isFiltered: boolean = false;
-
-  sortDirectionDate:  'asc' | 'desc' = 'asc';
+  /** @ignore */
+  sortDirectionDate: 'asc' | 'desc' = 'asc';
+  /** @ignore */
   sortDirectionSeats: 'asc' | 'desc' = 'asc';
-
+  /** @ignore */
   activeSortByDate: boolean = false;
+  /** @ignore */
   activeSortBySeats: boolean = false;
 
   /**

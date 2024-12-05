@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User, UserService } from '../../../user.service';
-
+ /**
+   * Odpowiada za wypisanie listy użytkowników 
+   */
 @Component({
   selector: 'lista-uczestnikow',
   standalone: true,

@@ -2,6 +2,9 @@ import { Component, Input } from '@angular/core';
 import { EventService } from '../../../event.service';
 import { User } from '../../../user.service';
 
+/**
+ * Komponent odpowiedzialny za dodawanie użytkownika do wybranego wydarzenia.
+ */
 @Component({
   selector: 'dodaj-uczestnika',
   standalone: true,
@@ -10,21 +13,31 @@ import { User } from '../../../user.service';
   styleUrl: './dodaj-uczestnika.component.scss'
 })
 export class DodajUczestnika {
+
   /**
-   * Wybrany użytkownik
+   * Obiekt reprezentujący użytkownika, który ma zostać dodany do wydarzenia.
+   * @type {User | any}
    */
   @Input() user: User | any;
+
   /**
-   * Wybrane wydarzenie
+   * Obiekt reprezentujący wydarzenie, do którego użytkownik ma zostać dodany.
+   * @type {Event | any}
    */
   @Input() event: Event | any;
 
-  constructor(private eventService: EventService) {}
+  /**
+   * Tworzy instancję komponentu `DodajUczestnika`.
+   * 
+   * @param {EventService} eventService - Serwis odpowiedzialny za operacje związane z wydarzeniami.
+   */
+  constructor(private eventService: EventService) { }
 
   /**
-   * Dodaje wybranego użytkownika do wybranego wydarzenia przy użyciu `EventService`
+   * Dodaje wybranego użytkownika do wybranego wydarzenia za pomocą metody `joinEvent` z serwisu `EventService`.
+   * Wyświetla komunikat o błędzie w przypadku niepowodzenia operacji.
    */
-  addUserToEvent() {
+  addUserToEvent(): void {
     this.eventService.joinEvent(this.user.id, this.event.id).subscribe({
       error: (err) => {
         console.error('Błąd zapisu na wydarzenie:', err);

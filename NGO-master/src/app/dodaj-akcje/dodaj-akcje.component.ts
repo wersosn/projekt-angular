@@ -3,6 +3,9 @@ import { EventService } from '../event.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+/**
+ * Komponent `DodajAkcje` umożliwia tworzenie nowych wydarzeń poprzez formularz.
+ */
 @Component({
   selector: 'app-dodaj-akcje',
   standalone: true,
@@ -12,7 +15,13 @@ import { Router, RouterOutlet, RouterLink, RouterLinkActive } from '@angular/rou
 })
 
 export class DodajAkcje {
+  /**
+  * Formularz dla nowego wydarzenia z walidacją pól.
+  */
   eventForm: FormGroup;
+  /**
+  * Obiekt przechowujący dane nowego wydarzenia.
+  */
   newEvent = {
     title: '',
     description: '',
@@ -25,7 +34,7 @@ export class DodajAkcje {
   /**
    * Wstrzykuje serwisy: `EventService`, `Router` i tworzy formularz do dodawania wydarzenia z walidacją pól.
    */
-  constructor(private eventService: EventService, private router: Router) { 
+  constructor(private eventService: EventService, private router: Router) {
     this.eventForm = new FormGroup({
       title: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),

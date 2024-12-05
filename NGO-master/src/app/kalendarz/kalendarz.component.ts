@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import { CalendarOptions } from '@fullcalendar/core'; 
+import { CalendarOptions } from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { EventService, Event } from '../event.service';
 import { Router } from '@angular/router';
+/**
+ * Komponent odpowiedzialny za wyświetlanie kalendarza wydarzeń oraz interakcję z nimi.
+ * Pozwala na przeglądanie wydarzeń w widoku kalendarza
+ * oraz nawigowanie do szczegółów wydarzenia po kliknięciu.
+ */
 @Component({
   selector: 'app-kalendarz',
   standalone: true,
@@ -16,7 +21,7 @@ import { Router } from '@angular/router';
 // TODO Zmienić kolejność dni tygodnia (na normalną)
 // TODO Dodać zmianę view na widok jednego dnia w handleDateClick ???
 // TODO W przyszłości filtry na wszystkie wydarzenia i te w których użytkownik bierze udział
-export class Kalendarz implements OnInit{
+export class Kalendarz implements OnInit {
   /**
    * @ignore
    */
@@ -29,18 +34,18 @@ export class Kalendarz implements OnInit{
    * Domyślne opcje kalendarza
    */
   calendarOptions: CalendarOptions = {
-      initialView: 'dayGridMonth',
-      plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
-      //dateClick: (arg) => this.handleDateClick(arg),
-      eventClick: (arg) => this.handleEventClick(arg),
-      events: []
-    };
+    initialView: 'dayGridMonth',
+    plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
+    //dateClick: (arg) => this.handleDateClick(arg),
+    eventClick: (arg) => this.handleEventClick(arg),
+    events: []
+  };
 
   /**
    * Wstrzykuje serwisy: EventService, Router
    */
   constructor(private eventService: EventService, private router: Router) { }
-  
+
   /**
    * Pobiera listę wydarzeń przy użyciu EventService i formatuje wyświetlanie ich w kalendarzu
    */
@@ -51,7 +56,7 @@ export class Kalendarz implements OnInit{
       this.calendarEvents = [];
       this.events.forEach(event => {
         let eventTitle = event.title + ' - ' + event.time;
-        this.calendarEvents.push({id: event.id, title: eventTitle, date: event.date});
+        this.calendarEvents.push({ id: event.id, title: eventTitle, date: event.date });
       });
       this.calendarOptions.events = [...this.calendarEvents];
     });
@@ -69,5 +74,5 @@ export class Kalendarz implements OnInit{
   handleEventClick(event: any) {
     this.router.navigateByUrl(`akcje/szczegóły/${event.event._def.publicId}`)
   }
-  
+
 }

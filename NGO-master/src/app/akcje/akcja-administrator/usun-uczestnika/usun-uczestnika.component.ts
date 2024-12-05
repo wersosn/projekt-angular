@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { User } from '../../../user.service';
 import { EventService } from '../../../event.service';
-
+/**
+ * Komponent odpowiedzialny za usuwanie użytkownika z wybranego wydarzenia.
+ */
 @Component({
   selector: 'usun-uczestnika',
   standalone: true,
@@ -19,7 +21,7 @@ export class UsunUczestnika {
    */
   @Input() event: User | any;
 
-  constructor(private eventService: EventService) {}
+  constructor(private eventService: EventService) { }
 
   /**
    * Usuwa wybranego użytkownika z wybranego wydarzenia

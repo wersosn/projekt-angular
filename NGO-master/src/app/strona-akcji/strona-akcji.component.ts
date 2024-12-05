@@ -7,7 +7,9 @@ import { switchMap } from 'rxjs/operators';
 import { EventService, Event } from '../event.service';
 import { RouterModule } from '@angular/router';  // Zaimportuj RouterModule
 import { UserService } from '../user.service';
-
+/**
+  * Strona wybranej akcji w której wypisywane są jej dane.
+  */
 @Component({
   selector: 'app-strona-akcji',
   standalone: true,
@@ -17,14 +19,21 @@ import { UserService } from '../user.service';
 })
 
 export class StronaAkcji implements OnInit {
-
-  isLoggedIn: boolean = false; // Zmienna sprawdzająca, czy użytkownik jest zalogowany
+  /**@ignore*/
+  isLoggedIn: boolean = false;
+  /**@ignore*/
   userRole: string | null = null;
+  /**@ignore*/
   id: number = 0;
+  /**@ignore*/
   eventDetails: any | null = null;
-
+  /**
+    @ignore
+    */
   constructor(private route: ActivatedRoute, private router: Router, private eventService: EventService, private userService: UserService) { }
-
+  /**
+    * Inicjalizacja komponentu. Sprawdza, czy użytkownik jest zalogowany oraz ładuje szczegóły wydarzenia. Pozwala również na usuwanie oraz edycje akcji dla administratora.
+    */
   ngOnInit() {
     const userId = localStorage.getItem('userId');
     this.isLoggedIn = !!userId;
@@ -35,7 +44,10 @@ export class StronaAkcji implements OnInit {
       this.loadEventDetails(this.id);
     });
   }
-
+  /**
+    * Ładuje szczegóły wydarzenia z serwisu EventService
+    * @param {number} id - Identyfikator wydarzenia
+    */
   loadEventDetails(id: number) {
     this.eventService.getEventById(id).subscribe({
       next: event => {
@@ -45,17 +57,23 @@ export class StronaAkcji implements OnInit {
       error: err => console.error('Error podczas pobierania szczegółów:', err)
     });
   }
-
+  /**
+     * Funkcja wracająca do poprzedniej strony
+     */
   back() {
     this.router.navigate(['', { from: 'StronaAkcji' }]);
   }
-
+  /**
+   * Funkcja do pobierania roli użytkownika z localStorage
+   */
   getUserRole(): string | null {
     return localStorage.getItem('userRole');
   }
 
-  // Metoda do zapisywania na akcje
-  //TODO DODAĆ ODŚWIERZANIE LICZNIKA 
+  /**
+    * Funkcja do zapisania się na wydarzenie. 
+    * Sprawdza, czy użytkownik jest zalogowany, a następnie zapisuje go na wydarzenie.
+    */
   joinEvent(): void {
     if (this.isLoggedIn) {
       const userId = localStorage.getItem('userId');
@@ -78,12 +96,14 @@ export class StronaAkcji implements OnInit {
       alert('Musisz być zalogowany, aby zapisać się na wydarzenie!');
     }
   }
-
+  /**
+    * Funkcja usuwająca wydarzenie.
+    */
   deleteEvent(eventId: number) {
     if (confirm('Czy na pewno chcesz usunąć to wydarzenie?')) {
       this.eventService.deleteEvent(eventId).subscribe({
         next: (response) => {
-          
+
           alert('Wydarzenie zostało usunięte.');
           this.router.navigate(['']);  // Przekierowanie na stronę główną lub listę wydarzeń
         },

@@ -1,5 +1,9 @@
-import { Component,Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { EventService } from '../../event.service';
+
+/**
+ * Komponent odpowiedzialny za wyświetlanie i interakcję z pojedynczym wydarzeniem dla wolontariusza.
+ */
 @Component({
   selector: 'akcja',
   standalone: true,
@@ -7,19 +11,30 @@ import { EventService } from '../../event.service';
   templateUrl: './akcja.component.html',
   styleUrl: './akcja.component.scss'
 })
-export class Akcja{
-  @Input() event: Event | any;
-  constructor(protected eventService: EventService) {}
+export class Akcja {
 
   /**
-   * Usuwa wydarzenie z listy zalogowanego użytkownika
-   * 
-   * @param {number} eventId Id wydarzenia z którego udziału rezygnuje zalogowany użytkownik
+   * Obiekt reprezentujący dane wydarzenia.
+   * @type {Event | any}
+   */
+  @Input() event: Event | any;
+
+  /**
+   * Tworzy instancję komponentu Akcja.
+   * @param {EventService} eventService - Serwis który pobiera dane o eventach.
+   */
+  constructor(protected eventService: EventService) { }
+
+  /**
+   * Usuwa wydarzenie z listy zapisanych wydarzeń zalogowanego wolontariusza.
+   *
+   * @param {number} eventId - Identyfikator wydarzenia, z którego udziału użytkownik chce zrezygnować.
+   * @returns {void}
    */
   cancelEvent(eventId: number): void {
     let userId = localStorage.getItem('userId');
-    if(userId){
-      this.eventService.removeEvent( parseInt(userId), eventId).subscribe({
+    if (userId) {
+      this.eventService.removeEvent(parseInt(userId), eventId).subscribe({
         next: () => {
           alert('Zrezygnowałeś z udziału w wydarzeniu!');
         },

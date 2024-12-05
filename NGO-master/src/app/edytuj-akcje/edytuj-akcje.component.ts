@@ -4,6 +4,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule, Location } from '@angular/common';
 import { EventService } from '../event.service';
 
+/**
+ * Komponent do edycji wydarzenia. Umożliwia edycję szczegółów istniejącego wydarzenia oraz zapisanie zmian.
+ */
 @Component({
   selector: 'app-edytuj-akcje',
   standalone: true,
@@ -12,13 +15,31 @@ import { EventService } from '../event.service';
   styleUrl: './edytuj-akcje.component.scss'
 })
 export class EdytujAkcje implements OnInit {
+  /**
+   * Formularz do edycji wydarzenia, zawiera pola z walidacją.
+   * 
+   * @type {FormGroup}
+   */
   eventForm: FormGroup;
+
+  /**
+   * ID edytowanego wydarzenia, pobrane z parametru w URL.
+   * 
+   * @type {number}
+   */
   eventId: number = 0;
 
   /**
-   * Wstrzykuje serwisy: `ActivatedRoute`, `EventService`, `Router`, `Location` i tworzy formularz do edycji wydarzenia z walidacją pól.
+   * Wstrzykuje wymagane serwisy: `ActivatedRoute`, `EventService`, `Router`, `Location`.
+   * Tworzy formularz z wymaganymi polami i walidacją.
+ 
    */
-  constructor(private route: ActivatedRoute, private eventService: EventService, private router: Router, private location: Location) {
+  constructor(
+    private route: ActivatedRoute,
+    private eventService: EventService,
+    private router: Router,
+    private location: Location
+  ) {
     this.eventForm = new FormGroup({
       title: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
@@ -30,10 +51,10 @@ export class EdytujAkcje implements OnInit {
   }
 
   /**
-   * Pobiera id wydarzenia z parametru w URL. W przypadku braku id wraca na stronę startową.
+   * Pobiera ID wydarzenia z parametru w URL i ładuje jego szczegóły.
+   * Jeśli parametr nie istnieje, przekierowuje użytkownika na stronę główną.
    */
-  ngOnInit() {
-    // Pobierz id wydarzenia z parametru w URL
+  ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const idParam = params.get('id');
       if (idParam) {
@@ -47,14 +68,14 @@ export class EdytujAkcje implements OnInit {
   }
 
   /**
-   * Wczytuje szczegóły wydarzenia przy użyciu `EventService`
+   * Pobiera szczegóły wydarzenia z serwera i wypełnia nimi formularz.
    * 
-   * @param id Id edytowanego wydarzenia
+   * @param {number} id - ID edytowanego wydarzenia.
    */
-  loadEventDetails(id: number) {
+  loadEventDetails(id: number): void {
     this.eventService.getEventById(id).subscribe({
       next: (event) => {
-        this.eventForm.patchValue(event);
+        this.eventForm.patchValue(event); // Wypełnia formularz danymi wydarzenia.
       },
       error: (err) => {
         console.error('Błąd podczas pobierania wydarzenia:', err);
@@ -63,19 +84,17 @@ export class EdytujAkcje implements OnInit {
   }
 
   /**
-   * Zapisuje edytowane wydarzenie przy użyciu `EventService` i wraca na poprzednią stronę
+   * Zapisuje zmodyfikowane wydarzenie przy użyciu `EventService` i wraca na poprzednią stronę.
    */
-  saveEvent() {
+  saveEvent(): void {
     if (this.eventForm.valid) {
-      // Pobranie danych z formularza i dodanie id do obiektu
       const updatedEvent = { ...this.eventForm.value, id: this.eventId };
       console.log('Wysyłane dane na backend:', updatedEvent);
-      // Wywołanie metody w serwisie, aby zaktualizować wydarzenie
+
       this.eventService.updateEvent(this.eventId, updatedEvent).subscribe({
         next: (response) => {
           console.log('Zaktualizowane wydarzenie:', response);
-          // Po zapisaniu wróć na poprzednią stronę
-          this.location.back();
+          this.location.back(); // Powrót do poprzedniej strony.
         },
         error: (err) => {
           console.error('Błąd przy aktualizacji:', err);
@@ -83,5 +102,4 @@ export class EdytujAkcje implements OnInit {
       });
     }
   }
-  
 }
