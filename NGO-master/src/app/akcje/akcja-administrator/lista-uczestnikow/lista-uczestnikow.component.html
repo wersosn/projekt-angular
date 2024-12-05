@@ -1,4 +1,15 @@
+<div class="user-list">
+    <div class="user-header">
+        <label class="form-label id-label">ID</label>
+        <label class="form-label">Imię</label>
+        <label class="form-label">Nazwisko</label>
+    </div>
 
-<ul>
-    <li></li>
-</ul>
+    @for(user of users; track user.id) {
+        <div class="user-item ">
+            <span class="data-box id-box">{{ user.id }}</span>
+            <span class="data-box">{{ user.name }}</span>
+            <span class="data-box">{{ user.surname }}</span>
+        </div>
+    }
+</div>

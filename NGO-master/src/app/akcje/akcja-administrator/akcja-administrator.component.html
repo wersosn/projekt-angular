@@ -96,24 +96,41 @@
 
     </div>
     @if(listVisible) {
-        <div class="action-box col-12">
-            <lista-uczestnikow class="col-2" [event]="event"></lista-uczestnikow>
+        <div class="action-box col-12 mt-3">
+            <lista-uczestnikow class="col-12" [eventId]="event.id"></lista-uczestnikow>
         </div>
     }
     @if(removeVisible) {
-        <div class="action-box col-12">
+        <div class="action-box col-12 mt-3 d-flex flex-column align-items-center" >
             <szukaj-uczestnika (findUserEvent)="findUsers($event)"></szukaj-uczestnika>
+            <div class="users-list w-100 mt-3">
+                <div class="user-header">
+                    <label class="form-label">ID</label>
+                    <label class="form-label">Imię</label>
+                    <label class="form-label">Nazwisko</label>
+                </div>
             @for(user of users; track trackUsersId()) {
-                <usun-uczestnika [user]="user" [event]="event"></usun-uczestnika>
+                <usun-uczestnika [user]="user" [event]="event" class="user-item mb-2"></usun-uczestnika>
             }
+        </div>
         </div>
     }
     @if(addVisible) {
-        <div class="action-box col-12">
+        <div class="action-box col-12 mt-3 d-flex flex-column align-items-center">
             <szukaj-uczestnika (findUserEvent)="findUsers($event)"></szukaj-uczestnika>
-            @for(user of users; track trackUsersId()) {
-                <dodaj-uczestnika [user]="user" [event]="event"></dodaj-uczestnika>
-            }
+            
+            <div class="users-list w-100 mt-3">
+                <div class="user-header">
+                    <label class="form-label">ID</label>
+                    <label class="form-label">Imię</label>
+                    <label class="form-label">Nazwisko</label>
+                </div>
+            
+                @for(user of users; track trackUsersId()) {
+                    <dodaj-uczestnika class="user-item col-12 mb-2" [user]="user" [event]="event"></dodaj-uczestnika>
+                }
+            </div>
         </div>
     }
+    
 </div>

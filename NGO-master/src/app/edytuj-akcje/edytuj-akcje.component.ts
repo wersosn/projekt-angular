@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterOutlet, RouterLink, RouterLinkActive, ActivatedRoute } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { EventService, Event } from '../event.service';
+
 
 @Component({
   selector: 'app-edytuj-akcje',
@@ -15,7 +16,7 @@ export class EdytujAkcjeComponent implements OnInit {
   eventForm: FormGroup;
   eventId: number = 0;
 
-  constructor(private route: ActivatedRoute, private eventService: EventService, private router: Router) {
+  constructor(private route: ActivatedRoute, private eventService: EventService, private router: Router, private location: Location) {
     this.eventForm = new FormGroup({
       title: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
@@ -61,9 +62,8 @@ export class EdytujAkcjeComponent implements OnInit {
       this.eventService.updateEvent(this.eventId, updatedEvent).subscribe({
         next: (response) => {
           console.log('Zaktualizowane wydarzenie:', response);
-          // Po zapisaniu przejdź na stronę szczegółów tego wydarzenia
-          //this.router.navigate(['']);
-          this.router.navigate(['/szczegóły-akcji', this.eventId]);
+          // Po zapisaniu wróć na poprzednią stronę
+          this.location.back();
         },
         error: (err) => {
           console.error('Błąd przy aktualizacji:', err);

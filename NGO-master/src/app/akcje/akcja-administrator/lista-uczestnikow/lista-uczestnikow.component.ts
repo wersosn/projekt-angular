@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { User, UserService } from '../../../user.service';
 
 @Component({
   selector: 'lista-uczestnikow',
@@ -7,6 +8,20 @@ import { Component, Input } from '@angular/core';
   templateUrl: './lista-uczestnikow.component.html',
   styleUrl: './lista-uczestnikow.component.scss'
 })
-export class ListaUczestnikowComponent {
-  @Input() event: any;
+export class ListaUczestnikowComponent implements OnInit {
+  @Input() eventId: any;
+  users: User[] = [];
+
+  constructor(private userService: UserService) {}
+
+  ngOnInit(): void {
+    this.userService.getUsers().subscribe(users => {
+      users.forEach(user => {
+        if(user.events.includes(this.eventId)){
+          this.users.push(user);
+        }
+      });
+
+    });
+  }
 }
