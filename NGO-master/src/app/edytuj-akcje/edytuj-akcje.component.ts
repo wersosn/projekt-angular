@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterOutlet, RouterLink, RouterLinkActive, ActivatedRoute } from '@angular/router';
+import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule, Location } from '@angular/common';
-import { EventService, Event } from '../event.service';
-
+import { EventService } from '../event.service';
 
 @Component({
   selector: 'app-edytuj-akcje',
@@ -16,6 +15,9 @@ export class EdytujAkcjeComponent implements OnInit {
   eventForm: FormGroup;
   eventId: number = 0;
 
+  /**
+   * Wstrzykuje serwisy: ActivatedRoute, EventService, Router, Location i tworzy formularz do edycji wydarzenia z walidacją pól.
+   */
   constructor(private route: ActivatedRoute, private eventService: EventService, private router: Router, private location: Location) {
     this.eventForm = new FormGroup({
       title: new FormControl('', Validators.required),
@@ -27,6 +29,9 @@ export class EdytujAkcjeComponent implements OnInit {
     });
   }
 
+  /**
+   * Pobiera id wydarzenia z parametru w URL. W przypadku braku id wraca na stronę startową.
+   */
   ngOnInit() {
     // Pobierz id wydarzenia z parametru w URL
     this.route.paramMap.subscribe(params => {
@@ -39,9 +44,13 @@ export class EdytujAkcjeComponent implements OnInit {
         this.router.navigate(['']);
       }
     });
-    
   }
 
+  /**
+   * Wczytuje szczegóły wydarzenia przy użyciu EventService
+   * 
+   * @param id Id edytowanego wydarzenia
+   */
   loadEventDetails(id: number) {
     this.eventService.getEventById(id).subscribe({
       next: (event) => {
@@ -53,6 +62,9 @@ export class EdytujAkcjeComponent implements OnInit {
     });
   }
 
+  /**
+   * Zapisuje edytowane wydarzenie przy użyciu EventService i wraca na poprzednią stronę
+   */
   saveEvent() {
     if (this.eventForm.valid) {
       // Pobranie danych z formularza i dodanie id do obiektu

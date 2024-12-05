@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { EventService } from '../event.service';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-dodaj-akcje',
   standalone: true,
@@ -23,7 +22,9 @@ export class DodajAkcjeComponent {
     seats: ''
   };
 
-  // Konstruktor, w którym wstrzykiwany jest serwis EventService + dodanie walidacji
+  /**
+   * Wstrzykuje serwisy: EventService, Router i tworzy formularz do dodawania wydarzenia z walidacją pól.
+   */
   constructor(private eventService: EventService, private router: Router) { 
     this.eventForm = new FormGroup({
       title: new FormControl('', Validators.required),
@@ -35,7 +36,9 @@ export class DodajAkcjeComponent {
     });
   }
 
-  // Dodanie wydarzenia przy użyciu EventService
+  /**
+   * Dodaje wydarzenie przy użyciu EventService
+   */
   addEvent() {
     if (this.eventForm.valid) {
       const eventWithId = { id: Date.now(), ...this.eventForm.value };
@@ -48,10 +51,5 @@ export class DodajAkcjeComponent {
         error: err => console.error('Error adding event:', err)
       });
     }
-  }
-
-  // Czyszczenie formularza
-  clearForm() {
-    this.newEvent = { title: '', description: '', date: '', time: '', location: '', seats: '' };
   }
 }
