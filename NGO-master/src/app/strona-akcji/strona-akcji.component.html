@@ -19,10 +19,10 @@
     <div class="col-lg-6 col-md-12 order-md-2">
       <div class="karta">
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <div *ngIf="eventDetails">
+          @if(eventDetails) {
             <h3>{{eventDetails?.title}}</h3>
             <p class="card-subtitle mb-2 text-muted">{{eventDetails?.date}},<br>{{eventDetails?.location}}</p>
-          </div>
+          }
           @if(eventDetails?.seats==0||!isLoggedIn){
             <button class="btn btn-primary btn-sm udz" (click)="joinEvent()" disabled>
               Weź Udział!

@@ -36,6 +36,7 @@ export class EventService {
       this.eventsSubject.next(events);
     });
   }
+
   // Dodanie nowego wydarzenia do serwera
   addEvent(event: Event): Observable<Event> {
     return this.http.post<Event>('http://localhost:3000/api/events', event).pipe(
