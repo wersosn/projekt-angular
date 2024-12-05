@@ -7,7 +7,7 @@ Administrator ma pełny dostęp do zarządzania wydarzeniami oraz użytkownikami
    ![brak](administrator-szczegoly-akcji.png)
    ![brak](administrator-edycja-akcji.png)
 - **Usuwanie wydarzeń**: Administrator może usunąć wydarzenia z bazy danych, co powoduje ich usunięcie z listy dostępnych wydarzeń.
-   ![brak](administrator-edycja-akcji.png)
+    ![brak](administrator-szczegoly-akcji.png)
 
 - **Wypisywanie danych administratora**: Administrator ma dostęp do swoich własnych danych.
    ![brak](administrator-konto.png)
