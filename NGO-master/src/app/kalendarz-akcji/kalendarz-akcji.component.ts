@@ -1,15 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterOutlet,RouterLink,RouterLinkActive } from '@angular/router';
 import { KalendarzComponent } from './kalendarz/kalendarz.component';
-
-interface Action {
-  id: number;
-  date: string; 
-  title: string;
-  description: string;
-  location: string;
-  status: string; 
-}
+/**
+ * @ignore
+ */
 @Component({
   selector: 'app-kalendarz-akcji',
   standalone: true,
@@ -18,8 +12,4 @@ interface Action {
   styleUrl: './kalendarz-akcji.component.scss'
 })
 export class KalendarzAkcjiComponent {
-  
-
-
-
 }
