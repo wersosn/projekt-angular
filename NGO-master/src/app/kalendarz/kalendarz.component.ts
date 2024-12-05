@@ -1,23 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { KalendarzAkcjiComponent } from '../kalendarz-akcji.component';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import { CalendarOptions } from '@fullcalendar/core'; 
 import interactionPlugin from '@fullcalendar/interaction';
 import { FullCalendarModule } from '@fullcalendar/angular';
-import { EventService, Event } from '../../event.service';
+import { EventService, Event } from '../event.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-kalendarz',
   standalone: true,
-  imports: [KalendarzAkcjiComponent,FullCalendarModule],
+  imports: [FullCalendarModule],
   templateUrl: './kalendarz.component.html',
   styleUrl: './kalendarz.component.scss'
 })
 // TODO Zmienić kolejność dni tygodnia (na normalną)
 // TODO Dodać zmianę view na widok jednego dnia w handleDateClick ???
 // TODO W przyszłości filtry na wszystkie wydarzenia i te w których użytkownik bierze udział
-export class KalendarzComponent implements OnInit{
+export class Kalendarz implements OnInit{
   /**
    * @ignore
    */
@@ -68,7 +67,7 @@ export class KalendarzComponent implements OnInit{
    * Przechodzi na stronę szczegółów akcji
    */
   handleEventClick(event: any) {
-    this.router.navigateByUrl(`szczegóły-akcji/${event.event._def.publicId}`)
+    this.router.navigateByUrl(`akcje/szczegóły/${event.event._def.publicId}`)
   }
   
 }
