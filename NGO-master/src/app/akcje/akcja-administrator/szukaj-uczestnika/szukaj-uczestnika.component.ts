@@ -13,6 +13,31 @@ export class SzukajUczestnikaComponent {
 
   constructor(private userService: UserService) {}
 
+  /**
+   * Wyszukuje użytkowników w których imieniu zawiera się name lub w nazwisku surname.
+   * 
+   * Wielkość znaków przy wyszukiwaniu jest pomijana. 
+   * 
+   * W przypadku pustych name i surname, przekazuje listę wszystkich użytkowników.
+   * 
+   * @example
+   * // Dla danych użytkowników:
+   * | Adam | Malysz | ...
+   * | ada  | maria  | ...
+   * // Wywołania:
+   * findUserInEvent("ada", "")
+   * findUserInEvent("Ada", "MA")
+   * findUserInEvent("", "")
+   * // Znajdują obu użytkowników.
+   * // A wywołania:
+   * findUserInEvent("adam", "")
+   * findUserInEvent("", "MAL")
+   * // Znajdują tylko 
+   * | Adam | Malysz| ...
+   * 
+   * @param {string} name Imię szukanego użytkownika 
+   * @param {string} surname Nazwisko szukanego użytkownika 
+   */
   findUserInEvent(name: string, surname: string) {
     this.userService.getUsers().subscribe(users => {
       var foundUsers: User[] = [];
@@ -31,12 +56,5 @@ export class SzukajUczestnikaComponent {
         this.findUserEvent.emit(foundUsers);
       });
     });
-
-    /*let id = parseInt(name);
-    this.userService.getUserData(id).subscribe(user => {
-      var users: User[] = [];
-      users.push(user);
-      this.findUserEvent.emit(users);
-    }); */
   }
 }

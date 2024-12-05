@@ -8,29 +8,20 @@ import { EventService } from '../../event.service';
   styleUrl: './akcja.component.scss'
 })
 export class AkcjaComponent{
-  //Zapisy: any[] = []; // Tablica akcji, w których bierze udział użytkownik
   @Input() event: any;
   constructor(protected eventService: EventService) {}
-  /*
-  ngOnInit(): void {
-    // Pobierz ID użytkownika z lokalnego storage lub sesji 
-    const userId = localStorage.getItem('userId');
-    if (userId) {
-      this.userEventService.getUserEvents(Number(userId)).subscribe(data => {
-        this.Zapisy = data; // Zapisz dane wydarzeń do zmiennej
-      });
-    } 
-  }
-  */
+
+  /**
+   * Usuwa wydarzenie z listy zalogowanego użytkownika
+   * 
+   * @param {number} eventId Id wydarzenia z którego udziału rezygnuje zalogowany użytkownik
+   */
   cancelEvent(eventId: number): void {
     let userId = localStorage.getItem('userId');
     if(userId){
-
- 
       this.eventService.removeEvent( parseInt(userId), eventId).subscribe({
         next: () => {
           alert('Zrezygnowałeś z udziału w wydarzeniu!');
-          //.ngOnInit(); // Odśwież dane po rezygnacji
         },
         error: (err) => {
           console.error('Błąd przy rezygnacji z wydarzenia:', err);
@@ -38,10 +29,5 @@ export class AkcjaComponent{
         }
       });
     }
-    }
-
-  // Dodajemy metodę trackZapisId, aby Angular mógł śledzić zmiany w elementach
-  trackZapisId(index: number, event: any): number {
-    return event.id; // Używamy unikalnego ID zapisu
   }
 }

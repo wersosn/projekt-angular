@@ -1,4 +1,4 @@
-import { Component,Input,OnInit  } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AkcjaComponent } from '../akcja/akcja.component';
 import { ListaUczestnikowComponent } from './lista-uczestnikow/lista-uczestnikow.component';

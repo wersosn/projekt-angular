@@ -9,7 +9,13 @@ import { User, UserService } from '../../../user.service';
   styleUrl: './lista-uczestnikow.component.scss'
 })
 export class ListaUczestnikowComponent implements OnInit {
-  @Input() eventId: any;
+  /**
+   * Id wybranego wydarzenia
+   */
+  @Input() eventId: number | any;
+  /**
+   * Lista uczestników wybranego wydarzenia
+   */
   users: User[] = [];
 
   constructor(private userService: UserService) {}
@@ -21,7 +27,6 @@ export class ListaUczestnikowComponent implements OnInit {
           this.users.push(user);
         }
       });
-
     });
   }
 }

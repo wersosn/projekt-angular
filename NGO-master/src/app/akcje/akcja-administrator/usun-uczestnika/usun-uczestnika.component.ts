@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { User, UserService } from '../../../user.service';
+import { Component, Input } from '@angular/core';
+import { User } from '../../../user.service';
 import { EventService } from '../../../event.service';
 
 @Component({
@@ -10,11 +10,20 @@ import { EventService } from '../../../event.service';
   styleUrl: './usun-uczestnika.component.scss'
 })
 export class UsunUczestnikaComponent {
-  @Input() user: any;
-  @Input() event: any;
+  /**
+   * Wybrany użytkownik
+   */
+  @Input() user: User | any;
+  /**
+   * Wybrane wydarzenie
+   */
+  @Input() event: User | any;
 
   constructor(private eventService: EventService) {}
 
+  /**
+   * Usuwa wybranego użytkownika z wybranego wydarzenia
+   */
   removeUserFromEvent() {
     this.eventService.removeEvent(this.user.id, this.event.id).subscribe({
       next: () => {

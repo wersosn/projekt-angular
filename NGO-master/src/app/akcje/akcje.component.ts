@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AkcjaComponent } from './akcja/akcja.component';
-import { RouterOutlet,RouterLink,RouterLinkActive, ActivatedRoute } from '@angular/router';
+import { RouterLink,RouterLinkActive } from '@angular/router';
 import { Event, EventService } from '../event.service';
 import { UserEventService } from '../UserEvent.service';
 import { UserService } from '../user.service';
@@ -13,7 +13,14 @@ import { AkcjaAdministratorComponent } from './akcja-administrator/akcja-adminis
   styleUrl: './akcje.component.scss'
 })
 export class AkcjeComponent implements OnInit {
-  events: Event[] = []; // Tablica akcji, w których bierze udział użytkownik
+  /**
+   * Zalogowany administrator:
+   * Tablica wszystkich akcji
+   * 
+   * Zalogowany użytkownik:
+   * Tablica akcji, w których bierze udział użytkownik
+   */
+  events: Event[] = [];
   private role: string = "";
 
   constructor(private eventService: EventService, private userEventService: UserEventService, private userService: UserService) {}
@@ -36,13 +43,6 @@ export class AkcjeComponent implements OnInit {
       });
     }
   } 
-  
-
-  // Dodajemy metodę trackZapisId, aby Angular mógł śledzić zmiany w elementach
-  trackZapisId(index: number, event: any): number {
-    //console.log(event.id) // ! Id sie dubluja !
-    return event.id; // Używamy unikalnego ID zapisu
-  }
 
   getRole(): string {
     return this.role;
