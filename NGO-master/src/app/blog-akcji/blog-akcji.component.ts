@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './blog-akcji.component.html',
   styleUrl: './blog-akcji.component.scss'
 })
-export class BlogAkcjiComponent implements OnInit {
+export class BlogAkcji implements OnInit {
   events: Event[] = [];
   allEvents: Event[] = [];
   isFiltered: boolean = false;
@@ -21,8 +21,14 @@ export class BlogAkcjiComponent implements OnInit {
   activeSortByDate: boolean = false;
   activeSortBySeats: boolean = false;
 
+  /**
+   * Wstrzykuje serwis `EventService`
+   */
   constructor(private eventService: EventService) { }
 
+  /**
+   * Wywołuje `fetchAndSetEvents()`
+   */
   ngOnInit() {
     this.fetchAndSetEvents();
   }
@@ -37,7 +43,9 @@ export class BlogAkcjiComponent implements OnInit {
       this.allEvents = [...events];
     });
   }
-
+  /**
+   * Sortuje wydarzenia po dacie
+   */
   sortByDate() {
     this.events.sort((a, b) => {
       const diff = new Date(a.date).getTime() - new Date(b.date).getTime();
@@ -47,7 +55,9 @@ export class BlogAkcjiComponent implements OnInit {
     this.activeSortByDate = true;
     this.activeSortBySeats = false; // Dezaktywuj sortowanie po miejscach
   }
-
+  /**
+   * Sortuje wydarzenia po liczbie dostępnych miejsc
+   */
   sortBySeats() {
     this.events.sort((a, b) => {
       const diff = a.seats - b.seats;
@@ -57,13 +67,17 @@ export class BlogAkcjiComponent implements OnInit {
     this.activeSortBySeats = true;
     this.activeSortByDate = false; // Dezaktywuj sortowanie po dacie
   }
-
+  /**
+   * Resetuje kolejność wyświetlanych wydarzeń
+   */
   resetOrder() {
     this.events = [...this.allEvents];
     this.activeSortByDate = false;
     this.activeSortBySeats = false; // Resetuj wszystkie sortowania
   }
-
+  /**
+   * Odfiltrowuje wydarzenia bez dostępnych miejsc
+   */
   toggleFilterSeats() {
     if (this.isFiltered) {
       this.events = [...this.allEvents];

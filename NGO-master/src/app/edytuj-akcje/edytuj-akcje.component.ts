@@ -11,12 +11,12 @@ import { EventService } from '../event.service';
   templateUrl: './edytuj-akcje.component.html',
   styleUrl: './edytuj-akcje.component.scss'
 })
-export class EdytujAkcjeComponent implements OnInit {
+export class EdytujAkcje implements OnInit {
   eventForm: FormGroup;
   eventId: number = 0;
 
   /**
-   * Wstrzykuje serwisy: ActivatedRoute, EventService, Router, Location i tworzy formularz do edycji wydarzenia z walidacją pól.
+   * Wstrzykuje serwisy: `ActivatedRoute`, `EventService`, `Router`, `Location` i tworzy formularz do edycji wydarzenia z walidacją pól.
    */
   constructor(private route: ActivatedRoute, private eventService: EventService, private router: Router, private location: Location) {
     this.eventForm = new FormGroup({
@@ -47,7 +47,7 @@ export class EdytujAkcjeComponent implements OnInit {
   }
 
   /**
-   * Wczytuje szczegóły wydarzenia przy użyciu EventService
+   * Wczytuje szczegóły wydarzenia przy użyciu `EventService`
    * 
    * @param id Id edytowanego wydarzenia
    */
@@ -63,7 +63,7 @@ export class EdytujAkcjeComponent implements OnInit {
   }
 
   /**
-   * Zapisuje edytowane wydarzenie przy użyciu EventService i wraca na poprzednią stronę
+   * Zapisuje edytowane wydarzenie przy użyciu `EventService` i wraca na poprzednią stronę
    */
   saveEvent() {
     if (this.eventForm.valid) {

@@ -9,7 +9,7 @@ import { User } from '../../../user.service';
   templateUrl: './dodaj-uczestnika.component.html',
   styleUrl: './dodaj-uczestnika.component.scss'
 })
-export class DodajUczestnikaComponent {
+export class DodajUczestnika {
   /**
    * Wybrany użytkownik
    */
@@ -22,7 +22,7 @@ export class DodajUczestnikaComponent {
   constructor(private eventService: EventService) {}
 
   /**
-   * Dodaje wybranego użytkownika do wybranego wydarzenia
+   * Dodaje wybranego użytkownika do wybranego wydarzenia przy użyciu `EventService`
    */
   addUserToEvent() {
     this.eventService.joinEvent(this.user.id, this.event.id).subscribe({

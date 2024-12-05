@@ -16,7 +16,7 @@ import { UserService } from '../user.service';
   styleUrl: './strona-akcji.component.scss'
 })
 
-export class StronaAkcjiComponent implements OnInit {
+export class StronaAkcji implements OnInit {
 
   isLoggedIn: boolean = false; // Zmienna sprawdzająca, czy użytkownik jest zalogowany
   userRole: string | null = null;
@@ -47,7 +47,7 @@ export class StronaAkcjiComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate(['', { from: 'StronaAkcjiComponent' }]);
+    this.router.navigate(['', { from: 'StronaAkcji' }]);
   }
 
   getUserRole(): string | null {
@@ -64,7 +64,7 @@ export class StronaAkcjiComponent implements OnInit {
       if (userId) {
         this.eventService.joinEvent(+userId, eventId).subscribe({
           next: () => {
-            this.router.navigate([`/szczegóły-akcji/${eventId}`]);
+            this.router.navigate([`/akcje/szczegóły/${eventId}`]);
             this.ngOnInit(); // Odśwież dane po zapisaniu
           },
           error: (err) => {

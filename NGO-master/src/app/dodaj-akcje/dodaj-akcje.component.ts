@@ -6,12 +6,12 @@ import { Router, RouterOutlet, RouterLink, RouterLinkActive } from '@angular/rou
 @Component({
   selector: 'app-dodaj-akcje',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterOutlet, RouterLink, RouterLinkActive, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './dodaj-akcje.component.html',
   styleUrl: './dodaj-akcje.component.scss'
 })
 
-export class DodajAkcjeComponent {
+export class DodajAkcje {
   eventForm: FormGroup;
   newEvent = {
     title: '',
@@ -23,7 +23,7 @@ export class DodajAkcjeComponent {
   };
 
   /**
-   * Wstrzykuje serwisy: EventService, Router i tworzy formularz do dodawania wydarzenia z walidacją pól.
+   * Wstrzykuje serwisy: `EventService`, `Router` i tworzy formularz do dodawania wydarzenia z walidacją pól.
    */
   constructor(private eventService: EventService, private router: Router) { 
     this.eventForm = new FormGroup({
@@ -37,7 +37,7 @@ export class DodajAkcjeComponent {
   }
 
   /**
-   * Dodaje wydarzenie przy użyciu EventService
+   * Dodaje wydarzenie przy użyciu `EventService`
    */
   addEvent() {
     if (this.eventForm.valid) {

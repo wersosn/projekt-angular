@@ -9,7 +9,7 @@ import { EventService } from '../../../event.service';
   templateUrl: './usun-uczestnika.component.html',
   styleUrl: './usun-uczestnika.component.scss'
 })
-export class UsunUczestnikaComponent {
+export class UsunUczestnika {
   /**
    * Wybrany użytkownik
    */

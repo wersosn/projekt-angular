@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
       return true; // Użytkownik jest zalogowany, zezwól na dostęp
     } else {
       // Użytkownik nie jest zalogowany, przekieruj na stronę logowania
-      this.router.navigate(['logowanie-component']);
+      this.router.navigate(['logowanie']);
       return false;
     }
   }

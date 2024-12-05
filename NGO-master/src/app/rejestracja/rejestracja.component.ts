@@ -10,7 +10,7 @@ import { FormBuilder, FormsModule, FormGroup, FormControl, ReactiveFormsModule, 
   templateUrl: './rejestracja.component.html',
   styleUrl: './rejestracja.component.scss'
 })
-export class RejestracjaComponent {
+export class Rejestracja {
   registerForm: FormGroup;
 
   constructor(private fb: FormBuilder, private router: Router, private http: HttpClient,) {
@@ -33,7 +33,7 @@ export class RejestracjaComponent {
       this.http.post('http://localhost:3000/register', this.registerForm.value).subscribe({
         next: (response) => {
           alert('Rejestracja zakończona sukcesem!');
-          this.router.navigate(['/logowanie-component']);  
+          this.router.navigate(['/logowanie']);  
         },
         error: (error) => {
           alert('Błąd rejestracji: ' + error.message); 

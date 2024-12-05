@@ -42,7 +42,7 @@ Sortuj wg daty ({{ sortDirectionDate === 'asc' ? 'Bliższe' : 'Dalsze' }})
           <div class="card-footer mt-3">
             <p class="card-description">{{ event.description }}</p>
             <p><strong>Miejsca:</strong> {{ event.seats }}</p>
-            <button class="btn btn-primary w-100" [routerLink]="['/szczegóły-akcji', event.id]" routerLinkActive="active" ariaCurrentWhenActive="page">Przejdź do akcji</button>
+            <button class="btn btn-primary w-100" [routerLink]="['/akcje/szczegóły', event.id]" routerLinkActive="active" ariaCurrentWhenActive="page">Przejdź do akcji</button>
           </div>
         </div>
       </div>

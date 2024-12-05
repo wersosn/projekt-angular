@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UsunUczestnikaComponent } from './usun-uczestnika.component';
+import { UsunUczestnika } from './usun-uczestnika.component';
 
-describe('UsunUczestnikaComponent', () => {
-  let component: UsunUczestnikaComponent;
-  let fixture: ComponentFixture<UsunUczestnikaComponent>;
+describe('UsunUczestnika', () => {
+  let component: UsunUczestnika;
+  let fixture: ComponentFixture<UsunUczestnika>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UsunUczestnikaComponent]
+      imports: [UsunUczestnika]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UsunUczestnikaComponent);
+    fixture = TestBed.createComponent(UsunUczestnika);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

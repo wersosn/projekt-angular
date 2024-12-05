@@ -8,17 +8,23 @@ import { User, UserService } from '../../../user.service';
   templateUrl: './szukaj-uczestnika.component.html',
   styleUrl: './szukaj-uczestnika.component.scss'
 })
-export class SzukajUczestnikaComponent {
+export class SzukajUczestnika {
   @Output() findUserEvent = new EventEmitter<User[]>();
 
+  /**
+   * Wstrzykuje serwis `UserService`
+   */
   constructor(private userService: UserService) {}
 
   /**
-   * Wyszukuje użytkowników w których imieniu zawiera się name lub w nazwisku surname.
+   * Wyszukuje użytkowników w których imieniu zawiera się `name` lub w nazwisku `surname`.
    * 
    * Wielkość znaków przy wyszukiwaniu jest pomijana. 
    * 
-   * W przypadku pustych name i surname, przekazuje listę wszystkich użytkowników.
+   * W przypadku pustych `name` i `surname`, przekazuje listę wszystkich użytkowników.
+   * 
+   * @param {string} name Imię szukanego użytkownika 
+   * @param {string} surname Nazwisko szukanego użytkownika 
    * 
    * @example
    * // Dla danych użytkowników:
@@ -33,10 +39,7 @@ export class SzukajUczestnikaComponent {
    * findUserInEvent("adam", "")
    * findUserInEvent("", "MAL")
    * // Znajdują tylko 
-   * | Adam | Malysz| ...
-   * 
-   * @param {string} name Imię szukanego użytkownika 
-   * @param {string} surname Nazwisko szukanego użytkownika 
+   * | Adam | Malysz | ...
    */
   findUserInEvent(name: string, surname: string) {
     this.userService.getUsers().subscribe(users => {

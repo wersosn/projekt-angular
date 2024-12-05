@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet,RouterLink,RouterLinkActive } from '@angular/router';
 import { FullCalendarModule } from '@fullcalendar/angular';
-import { BlogAkcjiComponent } from './blog-akcji/blog-akcji.component';
-import { DodajAkcjeComponent } from './dodaj-akcje/dodaj-akcje.component';
 import { Router } from '@angular/router';
 
 
@@ -12,7 +10,7 @@ import { Router } from '@angular/router';
   selector: 'app-root',
   standalone:true,
   templateUrl: './app.component.html',
-  imports:[BlogAkcjiComponent, RouterOutlet, RouterLink, RouterLinkActive,FullCalendarModule, DodajAkcjeComponent],
+  imports:[RouterOutlet, RouterLink, RouterLinkActive, FullCalendarModule],
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
@@ -30,11 +28,8 @@ export class AppComponent implements OnInit {
     localStorage.removeItem('userId');
     localStorage.removeItem('user');
    
-    this.router.navigate(['/logowanie-component']).then(() => {
+    this.router.navigate(['/logowanie']).then(() => {
       window.location.reload(); // Odśwież stronę po przekierowaniu
     });
-    
-  
-    
   }
 }

@@ -1,30 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { AkcjaComponent } from './akcja/akcja.component';
+import { Akcja } from './akcja/akcja.component';
 import { RouterLink,RouterLinkActive } from '@angular/router';
 import { Event, EventService } from '../event.service';
 import { UserEventService } from '../UserEvent.service';
 import { UserService } from '../user.service';
-import { AkcjaAdministratorComponent } from './akcja-administrator/akcja-administrator.component';
+import { AkcjaAdministrator } from './akcja-administrator/akcja-administrator.component';
 @Component({
   selector: 'app-akcje',
   standalone: true,
-  imports: [AkcjaComponent, AkcjaAdministratorComponent,RouterLink,RouterLinkActive],
+  imports: [Akcja, AkcjaAdministrator,RouterLink,RouterLinkActive],
   templateUrl: './akcje.component.html',
   styleUrl: './akcje.component.scss'
 })
-export class AkcjeComponent implements OnInit {
+export class Akcje implements OnInit {
   /**
    * Zalogowany administrator:
-   * Tablica wszystkich akcji
+   * Tablica wszystkich wydarzeń
    * 
    * Zalogowany użytkownik:
-   * Tablica akcji, w których bierze udział użytkownik
+   * Tablica wydarzeń, w których bierze udział użytkownik
    */
   events: Event[] = [];
+  /** @ignore */
   private role: string = "";
 
+  /**
+   * Wstrzykuje serwisy: `EventService`, `UserEventService`, `UserService`
+   */
   constructor(private eventService: EventService, private userEventService: UserEventService, private userService: UserService) {}
 
+  /**
+   * Zalogowany administrator:
+   * Pobiera wszystkie wydarzenia przy użyciu `EventService`
+   * 
+   * Zalogowany użytkownik:
+   * Pobiera wydarzenia, w których bierze udział użytkownik, przy użyciu `EventServie`
+   */
   ngOnInit(): void {
     // Pobierz ID użytkownika z lokalnego storage lub sesji 
     const userId = localStorage.getItem('userId');

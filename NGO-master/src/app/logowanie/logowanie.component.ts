@@ -11,7 +11,7 @@ import { FormBuilder, FormsModule, FormGroup, FormControl, ReactiveFormsModule, 
   templateUrl: './logowanie.component.html',
   styleUrl: './logowanie.component.scss'
 })
-export class LogowanieComponent {
+export class Logowanie {
   loginForm: FormGroup;
 
   constructor(private http: HttpClient, private router: Router, private fb: FormBuilder) {
@@ -35,7 +35,7 @@ export class LogowanieComponent {
           localStorage.setItem('userRole', response.user.role);
         
           // Przekierowanie po zalogowaniu
-          this.router.navigate(['/konto-wolontariusza']).then(() => {
+          this.router.navigate(['/konto']).then(() => {
             window.location.reload(); // Odśwież stronę po przekierowaniu
           });
         },

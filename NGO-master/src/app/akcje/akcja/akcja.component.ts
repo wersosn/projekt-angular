@@ -7,8 +7,8 @@ import { EventService } from '../../event.service';
   templateUrl: './akcja.component.html',
   styleUrl: './akcja.component.scss'
 })
-export class AkcjaComponent{
-  @Input() event: any;
+export class Akcja{
+  @Input() event: Event | any;
   constructor(protected eventService: EventService) {}
 
   /**
