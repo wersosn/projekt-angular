@@ -1,16 +1,18 @@
-# Aplikacja do Zapisywania i Zarządzania wydarzeniami
-
-## Opis
-Aplikacja umożliwia użytkownikom zapisywanie się na wydarzenia organizowane przez administratora. Użytkownicy muszą się zarejestrować lub zalogować, aby brać udział w wydarzeniach. Aplikacja wyświetla wszystkie dostępne wydarzenia na stronie głównej, a użytkownik może wybrać wydarzenie, zapoznać się z jego szczegółami, a następnie wybrać godzinę, na którą chce się zapisać.
-
-Po zapisaniu się na wydarzenie, dane o wydarzeniach, w których bierze udział użytkownik, są widoczne na jego koncie oraz w kalendarzu wydarzeń.
-
-## Funkcjonalności
-- **Rejestracja i logowanie użytkowników**: Użytkownicy mogą zarejestrować się i zalogować do aplikacji.
-- **Lista dostępnych wydarzeń**: Wszystkie dostępne wydarzenia organizowane przez administratora są widoczne na stronie głównej aplikacji.
-- **Szczegóły wydarzenia**: Użytkownicy mogą zobaczyć szczegóły wydarzenia, takie jak opis, data, godzina, lokalizacja oraz dostępność miejsc.
-- **Zapis/wypis na wydarzenia**: Użytkownicy mogą zapisać/wypisywać się na wydarzenie, na które chcą się zapisać.
-- **Kalendarz użytkownika**: Zapisane wydarzenia są widoczne na koncie użytkownika oraz w kalendarzu wydarzeń.
-- **Zarządzanie wydarzeniami przez administratora**: Administratora może edytować,usuwać,tworzyć wydarzenia a nawet dodawać,usuwać wolontariuszy z wydarzeń.
-- **Ograniczenie liczby miejsc**: Liczba dostępnych miejsc na wydarzeniu jest ograniczona. Po zapisaniu się użytkownika liczba dostępnych miejsc zmniejsza się.
-
+## Instrukcja użytkownika
+### Spis treści
+- [1 Niezalogowany](1%20Niezalogowany/README.md)
+    - [1.1 Logowanie](1%20Niezalogowany/1.1%20Logowanie/README.md)
+    - [1.2 Rejestracja](1%20Niezalogowany/1.2%20Rejestracja/README.md)
+    - [1.3 Wyświetlanie kalendarza](1%20Niezalogowany/1.3%20Wyświetlanie%20kalendarza/README.md)
+    - [1.4 Wyświetlanie szczegółów akcji](1%20Niezalogowany/1.4%20Wyświetlanie%20szczegółów%20akcji/README.md)
+- [2 Zalogowany](2%20Zalogowany/README.md)
+    - [2.1 Użytkownik](2%20Zalogowany/2.1%20Użytkownik/README.md)
+    - [2.2 Administrator](2%20Zalogowany/2.2%20Administrator/README.md)
+        - [2.2.1 Wyświetlanie szczegółów akcji](2%20Zalogowany/2.2%20Administrator/2.2.1%20Wyświetlanie%20szczegółów%20akcji/README.md)
+        - [2.2.2 Dodawanie nowej akcji](2%20Zalogowany/2.2%20Administrator/2.2.2%20Dodawanie%20nowej%20akcji/README.md)
+        - [2.2.3 Edycja akcji](2%20Zalogowany/2.2%20Administrator/2.2.3%20Edycja%20akcji/README.md)
+        - [2.2.4 Wyświetlanie uczestników akcji](2%20Zalogowany/2.2%20Administrator/2.2.4%20Wyświetlanie%20uczestników%20akcji/README.md)
+        - [2.2.5 Dodawanie uczestnika do akcji](2%20Zalogowany/2.2%20Administrator/2.2.5%20Dodawanie%20uczestnika%20do%20akcji/README.md)
+            - [Wyszukiwanie użytkowników](2%20Zalogowany/2.2%20Administrator/2.2.5%20Dodawanie%20uczestnika%20do%20akcji/#wyszukiwanie-uzytkownikow)
+            - [Dodawanie wyszukanych użytkowników do akcji](2%20Zalogowany/2.2%20Administrator/2.2.5%20Dodawanie%20uczestnika%20do%20akcji/#dodawanie-wyszukanych-uzytkownikow-do-akcji)
+        - [2.1.6 Usuwanie uczestnika z akcji](2%20Zalogowany/2.2%20Administrator/2.2.6%20Usuwanie%20uczestnika%20z%20akcji/README.md)

@@ -1,4 +1,4 @@
-# Administrator
+# 2.2.6 Usuwanie uczestnika z akcji
 ## Wyszukiwanie użytkowników
 W pola `Imię` i `Nazwisko` wpisujemy imię lub nazwisko osoby/osób które chcemy usunąć z akcji, a następnie wciskamy przycisk `Szukaj`. Po wyszukaniu pojawi się lista dostępnych użytkowników do dodania.
 ![dodawanie-uczestnikow](administrator-akcje-usun-uczestnika-wyszukiwanie.png)

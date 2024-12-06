@@ -1,4 +1,4 @@
-# Administrator
+# 2.2.5 Dodawanie uczestnika do akcji
 ## Wyszukiwanie użytkowników
 W pola `Imię` i `Nazwisko` wpisujemy imię lub nazwisko osoby/osób które chcemy dodać do akcji, a następnie wciskamy przycisk `Szukaj`. Po wyszukaniu pojawi się lista dostępnych użytkowników do dodania.
 ![dodawanie-uczestnikow](administrator-akcje-dodaj-uczestnika-wyszukiwanie.png)
