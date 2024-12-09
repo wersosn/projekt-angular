@@ -6,7 +6,7 @@
     "date": "2024-11-23",
     "time": "16:24",
     "location": "Białystok",
-    "seats": 11
+    "seats": 10
   },
   {
     "id": 1732362385388,
@@ -20,7 +20,7 @@
   },
   {
     "id": 1732734330374,
-    "title": "Test 3",
+    "title": "Akcja 3",
     "description": "Test rejestracji na wydarzenie",
     "date": "2024-11-30",
     "time": "14:00",
