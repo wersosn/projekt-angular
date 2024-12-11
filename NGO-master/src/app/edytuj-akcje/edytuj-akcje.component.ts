@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterOutlet, RouterLink, RouterLinkActive, ActivatedRoute } from '@angular/router';
+import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule, Location } from '@angular/common';
-import { EventService, Event } from '../event.service';
+import { EventService } from '../event.service';
 
-
+/**
+ * Komponent do edycji wydarzenia. Umożliwia edycję szczegółów istniejącego wydarzenia oraz zapisanie zmian.
+ */
 @Component({
   selector: 'app-edytuj-akcje',
   standalone: true,
@@ -12,11 +14,32 @@ import { EventService, Event } from '../event.service';
   templateUrl: './edytuj-akcje.component.html',
   styleUrl: './edytuj-akcje.component.scss'
 })
-export class EdytujAkcjeComponent implements OnInit {
+export class EdytujAkcje implements OnInit {
+  /**
+   * Formularz do edycji wydarzenia, zawiera pola z walidacją.
+   * 
+   * @type {FormGroup}
+   */
   eventForm: FormGroup;
+
+  /**
+   * ID edytowanego wydarzenia, pobrane z parametru w URL.
+   * 
+   * @type {number}
+   */
   eventId: number = 0;
 
-  constructor(private route: ActivatedRoute, private eventService: EventService, private router: Router, private location: Location) {
+  /**
+   * Wstrzykuje wymagane serwisy: `ActivatedRoute`, `EventService`, `Router`, `Location`.
+   * Tworzy formularz z wymaganymi polami i walidacją.
+ 
+   */
+  constructor(
+    private route: ActivatedRoute,
+    private eventService: EventService,
+    private router: Router,
+    private location: Location
+  ) {
     this.eventForm = new FormGroup({
       title: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
@@ -27,8 +50,11 @@ export class EdytujAkcjeComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    // Pobierz id wydarzenia z parametru w URL
+  /**
+   * Pobiera ID wydarzenia z parametru w URL i ładuje jego szczegóły.
+   * Jeśli parametr nie istnieje, przekierowuje użytkownika na stronę główną.
+   */
+  ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const idParam = params.get('id');
       if (idParam) {
@@ -39,13 +65,17 @@ export class EdytujAkcjeComponent implements OnInit {
         this.router.navigate(['']);
       }
     });
-    
   }
 
-  loadEventDetails(id: number) {
+  /**
+   * Pobiera szczegóły wydarzenia z serwera i wypełnia nimi formularz.
+   * 
+   * @param {number} id - ID edytowanego wydarzenia.
+   */
+  loadEventDetails(id: number): void {
     this.eventService.getEventById(id).subscribe({
       next: (event) => {
-        this.eventForm.patchValue(event);
+        this.eventForm.patchValue(event); // Wypełnia formularz danymi wydarzenia.
       },
       error: (err) => {
         console.error('Błąd podczas pobierania wydarzenia:', err);
@@ -53,17 +83,18 @@ export class EdytujAkcjeComponent implements OnInit {
     });
   }
 
-  saveEvent() {
+  /**
+   * Zapisuje zmodyfikowane wydarzenie przy użyciu `EventService` i wraca na poprzednią stronę.
+   */
+  saveEvent(): void {
     if (this.eventForm.valid) {
-      // Pobranie danych z formularza i dodanie id do obiektu
       const updatedEvent = { ...this.eventForm.value, id: this.eventId };
       console.log('Wysyłane dane na backend:', updatedEvent);
-      // Wywołanie metody w serwisie, aby zaktualizować wydarzenie
+
       this.eventService.updateEvent(this.eventId, updatedEvent).subscribe({
         next: (response) => {
           console.log('Zaktualizowane wydarzenie:', response);
-          // Po zapisaniu wróć na poprzednią stronę
-          this.location.back();
+          this.location.back(); // Powrót do poprzedniej strony.
         },
         error: (err) => {
           console.error('Błąd przy aktualizacji:', err);
@@ -71,5 +102,4 @@ export class EdytujAkcjeComponent implements OnInit {
       });
     }
   }
-  
 }

@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-center mb-2">
         <div class="gn">
             <a routerLink="/akcje" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn btn-primary">Akcje</a>
-            <a routerLink="/konto-wolontariusza" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn btn-primary kon">Konto</a>
+            <a routerLink="/konto" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn btn-primary kon">Konto</a>
         </div>
     </div>
     <h1 class="text-center mb-4">Twoje konto</h1>
@@ -52,7 +52,7 @@
         </div>
         @if(userData.role == 'administrator') {
             <hr>
-            <button class="btn btn-primary w-100" [routerLink]="['/dodaj-akcje']" routerLinkActive="active" ariaCurrentWhenActive="page">Dodaj akcje</button>
+            <button class="btn btn-primary w-100" [routerLink]="['/akcje/dodaj']" routerLinkActive="active" ariaCurrentWhenActive="page">Dodaj akcje</button>
         }
     </div>
 </div>
