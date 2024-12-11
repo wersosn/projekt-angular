@@ -3,16 +3,24 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+/**
+  Komponent do rejestracji wolontariuszy na strone.
+   */
 @Component({
   selector: 'app-rejestracja',
   standalone: true,
-  imports: [CommonModule,FormsModule,ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './rejestracja.component.html',
   styleUrl: './rejestracja.component.scss'
 })
-export class RejestracjaComponent {
+export class Rejestracja {
+  /**
+  @ignore
+   */
   registerForm: FormGroup;
-
+  /**
+    @ignore
+     */
   constructor(private fb: FormBuilder, private router: Router, private http: HttpClient,) {
     this.registerForm = this.fb.group({
       login: ['', [Validators.required, Validators.minLength(3)]],
@@ -26,17 +34,20 @@ export class RejestracjaComponent {
     });
   }
 
-  // Funkcja wysyłająca dane formularza do serwera
-  register(){
+  /**
+  * Funkcja wysyłająca dane formularza do serwera
+  * Jeśli formularz jest prawidłowy, wysyła dane do API.
+  */
+  register() {
     if (this.registerForm.valid) {
-      console.log( this.registerForm.value)
+      console.log(this.registerForm.value)
       this.http.post('http://localhost:3000/register', this.registerForm.value).subscribe({
         next: (response) => {
           alert('Rejestracja zakończona sukcesem!');
-          this.router.navigate(['/logowanie-component']);  
+          this.router.navigate(['/logowanie']);
         },
         error: (error) => {
-          alert('Błąd rejestracji: ' + error.message); 
+          alert('Błąd rejestracji: ' + error.message);
         }
       })
     }

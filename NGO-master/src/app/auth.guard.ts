@@ -1,22 +1,31 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 
+/**
+ * Guard, który chroni dostęp do określonych tras w aplikacji. 
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router) {}
+  /**
+  @ignore
+   */
+  constructor(private router: Router) { }
 
+  /**
+   * Sprawdza, czy użytkownik ma dostęp do żądanej trasy.
+   * @returns {boolean} - Zwraca `true` jeśli użytkownik jest zalogowany, w przeciwnym razie `false`.
+   */
   canActivate(): boolean {
-    // Sprawdź, czy `userId` istnieje w `localStorage`
+
     const userId = localStorage.getItem('userId');
 
     if (userId) {
-      return true; // Użytkownik jest zalogowany, zezwól na dostęp
+      return true;
     } else {
-      // Użytkownik nie jest zalogowany, przekieruj na stronę logowania
-      this.router.navigate(['logowanie-component']);
+      this.router.navigate(['logowanie']);
       return false;
     }
   }

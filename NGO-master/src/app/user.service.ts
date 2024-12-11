@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+/**
+ @ignore
+ */
 export interface User {
   id: number;
   role: string;
@@ -20,20 +22,28 @@ export interface User {
   providedIn: 'root'
 })
 export class UserService {
-
+  /**
+     * Domyślne opcje kalendarza
+     */
   private userUrl = 'http://localhost:3000/users'; // URL do serwera JSON
-
-  constructor(private http: HttpClient) {}
-
+ /**@ignore*/
+  constructor(private http: HttpClient) { }
+  /**
+   * Pobiera wszystkich użytkowników z backendu
+   */
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.userUrl}`);
   }
 
-  // Metoda do pobierania danych użytkownika po ID
+  /**
+  * Pobiera dane użytkownika na podstawie jego ID
+  */
   getUserData(userId: number): Observable<User> {
     return this.http.get<User>(`${this.userUrl}/${userId}`);
   }
-  
+  /**
+   * Pobiera szczegóły użytkownika, w tym jego ID, rolę, login oraz email
+   */
   getUserDetails(userId: string): Observable<{ id: number; role: string; login: string; email: string }> {
     return this.http.get<{ id: number; role: string; login: string; email: string }>(`${this.userUrl}/users/${userId}`);
   }

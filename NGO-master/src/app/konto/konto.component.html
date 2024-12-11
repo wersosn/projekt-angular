@@ -1,0 +1,58 @@
+<div class="container mt-2">
+    <!-- Górna nawigacja -->
+    <div class="d-flex justify-content-center mb-2">
+        <div class="gn">
+            <a routerLink="/akcje" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn btn-primary">Akcje</a>
+            <a routerLink="/konto" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn btn-primary kon">Konto</a>
+        </div>
+    </div>
+    <h1 class="text-center mb-4">Twoje konto</h1>
+
+    <!-- Główna sekcja -->
+    <div class="karta">
+        <div class="card-body">
+            <!-- Dane osobowe -->
+            <h3 class="mb-3">Dane osobowe:</h3>
+            <div class="row g-3">
+                <div class="col-md-5">
+                    <label class="form-label text-center w-100">Login</label>
+                    <div class="data-box"><span>{{ userData.login }}</span></div>
+                </div>
+                <div class="col-md-5">
+                    <label class="form-label text-center w-100">Hasło</label>
+                    <div class="data-box"><span>{{ userData.password }}</span></div>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label text-center w-100">Płeć</label>
+                    <div class="data-box"><span>{{ userData.gender }}</span></div>
+                </div>
+                
+                <div class="col-md-6">
+                    <label class="form-label text-center w-100">Imię</label>
+                    <div class="data-box"><span>{{ userData.name }}</span></div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label text-center w-100">Nazwisko</label>
+                    <div class="data-box"><span>{{ userData.surname }}</span></div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label text-center w-100">Telefon</label>
+                    <div class="data-box"><span>{{ userData.phone }}</span></div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label text-center w-100">Email</label>
+                    <div class="data-box"><span>{{ userData.email }}</span></div>
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label text-center w-100">Adres</label>
+                    <div class="data-box"><span>{{ userData.address }}</span></div>
+                </div>
+                
+            </div>
+        </div>
+        @if(userData.role == 'administrator') {
+            <hr>
+            <button class="btn btn-primary w-100" [routerLink]="['/akcje/dodaj']" routerLinkActive="active" ariaCurrentWhenActive="page">Dodaj akcje</button>
+        }
+    </div>
+</div>

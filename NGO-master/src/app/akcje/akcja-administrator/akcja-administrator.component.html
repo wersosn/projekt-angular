@@ -4,8 +4,8 @@
             <h3 style="font-weight: 700;">{{ event.title }}</h3>
             <p><strong>Data:</strong> {{ event.date }}</p>
             <p><strong>Lokalizacja:</strong> {{ event.location }}</p>
-            <button class="btn" [routerLink]="['/szczegóły-akcji', event?.id]" routerLinkActive="active" ariaCurrentWhenActive="page">Szczegóły Akcji</button>
-            <button class="btn" [routerLink]="['/edytuj-akcje', event?.id]" routerLinkActive="active" ariaCurrentWhenActive="page">Edytuj Akcje</button>
+            <button class="btn" [routerLink]="['/akcje/szczegóły', event?.id]" routerLinkActive="active" ariaCurrentWhenActive="page">Szczegóły Akcji</button>
+            <button class="btn" [routerLink]="['/akcje/edytuj', event?.id]" routerLinkActive="active" ariaCurrentWhenActive="page">Edytuj Akcje</button>
         </div>
         <div class="col-3">
             <p><strong>Opis:</strong> {{ event.description }}</p>
@@ -21,7 +21,6 @@
         <div class="col-4 text-center">
             <h6 class="mb-2">Lista podstawowa:</h6>
             <div class="d-flex flex-wrap gap-2 mb-3 justify-content-center">
-                
                 @if(event.seats <= 0){
                     <button
                     type="button"
@@ -41,57 +40,7 @@
                     <small class="text-white">Liczba miejsc: {{ event.seats }}</small>
                 </button>
                 }
-                <!--
-               @for(czas of zapis.basicList;track czas.id){
-                @if(czas.spots=== 0){
-                    <button
-                    type="button"
-                    class="btn btn-secondary"
-                    >
-                    {{ czas.hour }}
-                    <br />
-                    <small class="text-white">Liczba miejsc: {{ czas.spots }}</small>
-                  </button>
-                }
-                @else if(czas.spots>0){
-                <button
-                    type="button"
-                    class="btn btn-primary"
-                >
-                    {{ czas.hour }}
-                    <br />
-                    <small class="text-white">Liczba miejsc: {{ czas.spots }}</small>
-                </button>
-                }
-               } -->
             </div>
-            <!-- Lista Rezerwowa
-            <h6 class="mb-2">Lista rezerwowa:</h6>
-            <div class="d-flex flex-wrap gap-2 mb-3 justify-content-center">
-                @for(czas of zapis.reserveList;track czas.id){
-                    @if(czas.spots=== 0){
-                        <button
-                        type="button"
-                        class="btn btn-secondary"
-                        >
-                        {{ czas.hour }}
-                        <br />
-                        <small class="text-white">Liczba miejsc: {{ czas.spots }}</small>
-                      </button>
-                    }
-                    @else if(czas.spots>0){
-                    <button
-                    type="button"
-                    class="btn btn-primary"
-                  >
-                    {{ czas.hour }}
-                    <br />
-                    <small class="text-white">Liczba miejsc: {{ czas.spots }}</small>
-                  </button>
-                }
-                   }
-            </div> -->
-           
         </div>
 
     </div>
@@ -109,7 +58,7 @@
                     <label class="form-label">Imię</label>
                     <label class="form-label">Nazwisko</label>
                 </div>
-            @for(user of users; track trackUsersId()) {
+            @for(user of users; track user.id) {
                 <usun-uczestnika [user]="user" [event]="event" class="user-item mb-2"></usun-uczestnika>
             }
         </div>
@@ -126,7 +75,7 @@
                     <label class="form-label">Nazwisko</label>
                 </div>
             
-                @for(user of users; track trackUsersId()) {
+                @for(user of users; track user.id) {
                     <dodaj-uczestnika class="user-item col-12 mb-2" [user]="user" [event]="event"></dodaj-uczestnika>
                 }
             </div>

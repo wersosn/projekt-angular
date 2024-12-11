@@ -3,12 +3,12 @@
 <div class="d-flex justify-content-center mb-2 ">
     <div class="gn">
     <a routerLink="/akcje" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn btn-primary kon">Akcje</a> 
-    <a routerLink="/konto-wolontariusza" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn btn-primary ">Konto</a> 
+    <a routerLink="/konto" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn btn-primary ">Konto</a> 
 </div>
 </div>
     <div class="actions ">
         <h1 class="text-center mb-4">Twoje Akcje</h1>
-        @for(event of events; track trackZapisId(event.id, event)){
+        @for(event of events; track event.id){
             @if(getRole() === "administrator") {
                 <akcja-administrator [event]=event></akcja-administrator>
             } @else {

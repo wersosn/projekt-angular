@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DodajAkcjeComponent } from './dodaj-akcje.component';
+import { DodajAkcje } from './dodaj-akcje.component';
 
-describe('DodajAkcjeComponent', () => {
-  let component: DodajAkcjeComponent;
-  let fixture: ComponentFixture<DodajAkcjeComponent>;
+describe('DodajAkcje', () => {
+  let component: DodajAkcje;
+  let fixture: ComponentFixture<DodajAkcje>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DodajAkcjeComponent]
+      imports: [DodajAkcje]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DodajAkcjeComponent);
+    fixture = TestBed.createComponent(DodajAkcje);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

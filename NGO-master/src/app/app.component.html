@@ -11,17 +11,17 @@
   </div>
   <ul class="navbar-links">
     <li><a routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">Blog Akcji</a></li>
-    <li><a routerLink="/kalendarz-akcji-component" routerLinkActive="active" ariaCurrentWhenActive="page">Kalendarz
+    <li><a routerLink="/kalendarz" routerLinkActive="active" ariaCurrentWhenActive="page">Kalendarz
         akcji</a></li>
         @if(userId){
          
-            <li><a routerLink="/konto-wolontariusza">Twoje konto</a></li>
+            <li><a routerLink="/konto">Twoje konto</a></li>
             <li> <a (click)="logout()" style="cursor:pointer">Wyloguj</a></li>
        
         }
         @else {
           <li>
-            <a routerLink="/logowanie-component">Zaloguj się</a>
+            <a routerLink="/logowanie">Zaloguj się</a>
           </li>
         }
        

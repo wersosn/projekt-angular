@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User, UserService } from '../../../user.service';
-
+ /**
+   * Odpowiada za wypisanie listy użytkowników 
+   */
 @Component({
   selector: 'lista-uczestnikow',
   standalone: true,
@@ -8,12 +10,24 @@ import { User, UserService } from '../../../user.service';
   templateUrl: './lista-uczestnikow.component.html',
   styleUrl: './lista-uczestnikow.component.scss'
 })
-export class ListaUczestnikowComponent implements OnInit {
-  @Input() eventId: any;
+export class ListaUczestnikow implements OnInit {
+  /**
+   * Id wybranego wydarzenia
+   */
+  @Input() eventId: number | any;
+  /**
+   * Lista uczestników wybranego wydarzenia
+   */
   users: User[] = [];
 
+  /**
+   * Wstrzykuje serwis `UserService`
+   */
   constructor(private userService: UserService) {}
 
+  /**
+   * Pobiera użytkowników przy użyciu `EventService`
+   */
   ngOnInit(): void {
     this.userService.getUsers().subscribe(users => {
       users.forEach(user => {
@@ -21,7 +35,6 @@ export class ListaUczestnikowComponent implements OnInit {
           this.users.push(user);
         }
       });
-
     });
   }
 }
