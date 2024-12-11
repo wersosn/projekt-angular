@@ -1,30 +1,50 @@
-# NGO
+# Aplikacja do Zapisywania i Zarządzania wydarzeniami
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
+## Opis
+Aplikacja umożliwia użytkownikom zapisywanie się na wydarzenia organizowane przez administratora. Użytkownicy muszą się zarejestrować lub zalogować, aby brać udział w wydarzeniach. Aplikacja wyświetla wszystkie dostępne wydarzenia na stronie głównej, a użytkownik może wybrać wydarzenie, zapoznać się z jego szczegółami, a następnie wybrać godzinę, na którą chce się zapisać.
 
-## Development server
+Po zapisaniu się na wydarzenie, dane o wydarzeniach, w których bierze udział użytkownik, są widoczne na jego koncie oraz w kalendarzu wydarzeń.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Funkcjonalności
+- **Rejestracja i logowanie użytkowników**: Użytkownicy mogą zarejestrować się i zalogować do aplikacji.
+- **Lista dostępnych wydarzeń**: Wszystkie dostępne wydarzenia organizowane przez administratora są widoczne na stronie głównej aplikacji.
+- **Szczegóły wydarzenia**: Użytkownicy mogą zobaczyć szczegóły wydarzenia, takie jak opis, data, godzina, lokalizacja oraz dostępność miejsc.
+- **Zapis/wypis na wydarzenia**: Użytkownicy mogą zapisać/wypisywać się na wydarzenie, na które chcą się zapisać.
+- **Kalendarz użytkownika**: Zapisane wydarzenia są widoczne na koncie użytkownika oraz w kalendarzu wydarzeń.
+- **Zarządzanie wydarzeniami przez administratora**: Administratora może edytować,usuwać,tworzyć wydarzenia a nawet dodawać,usuwać wolontariuszy z wydarzeń.
+- **Ograniczenie liczby miejsc**: Liczba dostępnych miejsc na wydarzeniu jest ograniczona. Po zapisaniu się użytkownika liczba dostępnych miejsc zmniejsza się.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Konfiguracja projektu
 
-## Build
+### Wymagania
+ * Zainstalowany [Node.js](https://nodejs.org/) razem z menadżerem pakietów [npm](https://www.npmjs.com/get-npm)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Przygotowanie projektu
+Pobranie i przejście do głównego folderu projektu:
+```
+git clone https://github.com/wersosn/projekt-angular.git 
+cd projekt-angular/NGO-master
+```
+Instalacja wymaganych pakietów:
+```
+npm install
+```
+Uruchomienie aplikacji w trybie deweloperskim:
+```
+ng serve
+```
+Aplikacja zostanie uruchomiona lokalnie i dostępna pod adresem `http://localhost:4200/`
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Dokumentacja
 
-## Running end-to-end tests
+Wygenerowanie oraz uruchomienie dokumentacji:
+```
+npm run compodoc
+```
+Dokumentaca zostanie uruchomiona lokalnie i dostępna pod adresem `http://localhost:8080/`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-
-# Docs
-Run `npm run compodoc` for a docs server. Navigate to `http://localhost:8080/`. The application will automatically reload if you change any of the source files.
+## Instrukcja użytkownika
+Spis treści dostępny jest w pliku [README](instrukcja/README.md) w katalogu `instrukcja`
