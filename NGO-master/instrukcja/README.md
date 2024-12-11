@@ -13,6 +13,4 @@
         - [2.2.3 Edycja akcji](2%20Zalogowany/2.2%20Administrator/2.2.3%20Edycja%20akcji/README.md)
         - [2.2.4 Wyświetlanie uczestników akcji](2%20Zalogowany/2.2%20Administrator/2.2.4%20Wyświetlanie%20uczestników%20akcji/README.md)
         - [2.2.5 Dodawanie uczestnika do akcji](2%20Zalogowany/2.2%20Administrator/2.2.5%20Dodawanie%20uczestnika%20do%20akcji/README.md)
-            - [Wyszukiwanie użytkowników](2%20Zalogowany/2.2%20Administrator/2.2.5%20Dodawanie%20uczestnika%20do%20akcji/#wyszukiwanie-uzytkownikow)
-            - [Dodawanie wyszukanych użytkowników do akcji](2%20Zalogowany/2.2%20Administrator/2.2.5%20Dodawanie%20uczestnika%20do%20akcji/#dodawanie-wyszukanych-uzytkownikow-do-akcji)
         - [2.1.6 Usuwanie uczestnika z akcji](2%20Zalogowany/2.2%20Administrator/2.2.6%20Usuwanie%20uczestnika%20z%20akcji/README.md)

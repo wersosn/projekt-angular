@@ -16,3 +16,9 @@ Przejście na stronę logowania jest możliwe z paska nawigacyjnego, patrz **[1 
 | 
 <a title="1.2 Rejestracja" href="../1.2 Rejestracja/README.md"><b>Następna strona</b></a> 
 </p>
+
+<p align="center">
+<a title="Strona główna" href="../../../README.md"><b>Strona główna</b></a> 
+<br>
+<a title="Spis treści" href="../../README.md"><b>Spis treści</b></a> 
+</p>

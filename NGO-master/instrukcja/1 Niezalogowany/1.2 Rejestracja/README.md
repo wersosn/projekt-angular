@@ -20,3 +20,9 @@ Przejście na stronę rejestracji jest możliwe tylko ze strony logowania, patrz
 | 
 <a title="1.3 Wyświetlanie kalendarza" href="../1.3 Wyświetlanie kalendarza/README.md"><b>Następna strona</b></a> 
 </p>
+
+<p align="center">
+<a title="Strona główna" href="../../../README.md"><b>Strona główna</b></a> 
+<br>
+<a title="Spis treści" href="../../README.md"><b>Spis treści</b></a> 
+</p>

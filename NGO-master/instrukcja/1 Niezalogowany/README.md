@@ -25,8 +25,12 @@ Wyświetlane wydarzenia można filtrować i sortować przy pomocy przycisków:
 ![filtrowanie-sortowanie](blog-filtrowanie-sortowanie-akcji.png)
 
 
+<p align="center"> 
+<a title="1.1 Logowanie" href="1.1 Logowanie/README.md"><b>Następna strona</b></a> 
+</p>
+
 <p align="center">
-<a title="1.1 Logowanie" href="1.1 Logowanie/README.md"><b>Pierwszy podrozdział</b></a> 
-| 
-<a title="2 Zalogowany" href="../2 Zalogowany/README.md"><b>Następny rozdział</b></a> 
+<a title="Strona główna" href="../../README.md"><b>Strona główna</b></a> 
+<br>
+<a title="Spis treści" href="../README.md"><b>Spis treści</b></a> 
 </p>

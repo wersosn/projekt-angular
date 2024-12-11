@@ -15,3 +15,9 @@ Naciśnięcie wybranego wydarzenia powoduje przejście do jego szczegółów.
 | 
 <a title="1.4 Wyświetlanie szczegółów akcji" href="../1.4 Wyświetlanie szczegółów akcji/README.md"><b>Następna strona</b></a> 
 </p>
+
+<p align="center">
+<a title="Strona główna" href="../../../README.md"><b>Strona główna</b></a> 
+<br>
+<a title="Spis treści" href="../../README.md"><b>Spis treści</b></a> 
+</p>
