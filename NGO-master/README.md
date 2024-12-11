@@ -14,8 +14,37 @@ Po zapisaniu się na wydarzenie, dane o wydarzeniach, w których bierze udział 
 - **Zarządzanie wydarzeniami przez administratora**: Administratora może edytować,usuwać,tworzyć wydarzenia a nawet dodawać,usuwać wolontariuszy z wydarzeń.
 - **Ograniczenie liczby miejsc**: Liczba dostępnych miejsc na wydarzeniu jest ograniczona. Po zapisaniu się użytkownika liczba dostępnych miejsc zmniejsza się.
 
-## ...
+
+## Konfiguracja projektu
+
+### Wymagania
+ * Zainstalowany [Node.js](https://nodejs.org/) razem z menadżerem pakietów [npm](https://www.npmjs.com/get-npm)
+
+### Przygotowanie projektu
+Pobranie i przejście do głównego folderu projektu:
+```
+git clone https://github.com/wersosn/projekt-angular.git 
+cd projekt-angular/NGO-master
+```
+Instalacja wymaganych pakietów:
+```
+npm install
+```
+Uruchomienie aplikacji w trybie deweloperskim:
+```
+ng serve
+```
+Aplikacja zostanie uruchomiona lokalnie i dostępna pod adresem `http://localhost:4200/`
 
 
-## Instrukcja
+## Dokumentacja
+
+Wygenerowanie oraz uruchomienie dokumentacji:
+```
+npm run compodoc
+```
+Dokumentaca zostanie uruchomiona lokalnie i dostępna pod adresem `http://localhost:8080/`
+
+
+## Instrukcja użytkownika
 Spis treści dostępny jest w pliku [README](instrukcja/README.md) w katalogu `instrukcja`

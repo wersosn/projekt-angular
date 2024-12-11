@@ -1,9 +1,32 @@
-### Dla niezalogowanych użytkowników:
-- **Przeglądanie wydarzeń**: Niezalogowani użytkownicy mogą przeglądać listę wszystkich dostępnych wydarzeń na stronie głównej aplikacji lub w widoku kalendarza akcji.
-![blog.png](blog.png)
-![niezalogowany](kalendarz.png)
-- **Szczegóły wydarzenia**: Użytkownicy mogą zobaczyć szczegóły wydarzenia, takie jak opis, data, godzina, lokalizacja oraz liczba dostępnych miejsc.
-![niezalogowany](szczegoly-akcji.png)
-- **Rejestracja i logowanie**: Niezalogowani użytkownicy mogą zarejestrować się lub zalogować do aplikacji, aby móc zapisać się na wydarzenia i mieć dostęp do funkcjonalności strony.
-![niezalogowany](logowanie.png)
-![niezalogowany](rejestracja.png)
+# 1 Niezalogowany
+
+## Strona główna
+Na stronie głównej aplikacji wyświetlane są wszystkie dostępne wydarzenia. Użytkownicy mogą zobaczyć podstawowe informacje wydarzenia, takie jak tytuł, krótki opis, data, lokalizacja oraz liczba dostępnych miejsc. Po wciśnięciu przycisku `Przejdź do akcji` następuje przekierowanie na stronę szczegółów wydarzenia, patrz **[1.4 Wyświetlanie szczegółów akcji](1.4%20Wyświetlanie%20szczegółów%20akcji/README.md)** 
+
+
+![blog](blog.png)
+
+## Pasek nawigacyjny
+Na pasku nawigacyjnym niezalogowanego użytkownika znajdują się 3 pola:
+ * `Blog Akcji` - Prowadzi na stronę główną aplikacji
+ * `Kalendarz Akcji` - Prowadzi na stronę kalendarza, patrz **[1.3 Wyświetlanie kalendarza](1.3%20Wyświetlanie%20kalendarza/README.md)**
+ * `Zaloguj się` - Prowadzi na stronę logowania, patrz **[1.1 Logowanie](1.1%20Logowanie/README.md)**
+
+
+![pasek-nawigacyjny](blog-pasek-nawigacyjny.png)
+
+## Filtrowanie/Sortowanie wydarzeń
+Wyświetlane wydarzenia można filtrować i sortować przy pomocy przycisków:
+ * `Sortuj wg daty` - Przełącza sortowanie według daty między sortowaniem rosnąco a malejąco
+ * `Sortuj wg liczby miejsc` - Przełącza sortowanie według liczby miejsc między sortowaniem rosnąco a malejąco
+ * `Ukryj wydarzenia bez miejsc` - Ukrywa wydarzenia w których nie ma dostępnych miejsc i do których nie można się zapisać
+ * `Przywróć oryginalne ułożenie` - Resetuje sortowanie oraz filtry
+
+![filtrowanie-sortowanie](blog-filtrowanie-sortowanie-akcji.png)
+
+
+<p align="center">
+<a title="1.1 Logowanie" href="1.1 Logowanie/README.md"><b>Pierwszy podrozdział</b></a> 
+| 
+<a title="2 Zalogowany" href="../2 Zalogowany/README.md"><b>Następny rozdział</b></a> 
+</p>
