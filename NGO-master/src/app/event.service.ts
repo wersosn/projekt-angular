@@ -149,38 +149,3 @@ export class EventService {
     );
   }
 }
-
-
-// Stary kod
-/*export class EventService {
-  private eventsKey = 'events';
-  private eventsSubject = new BehaviorSubject<any[]>(this.loadEventsFromStorage());
-
-  // Strumień wydarzeń, do którego można subskrybować
-  events$ = this.eventsSubject.asObservable();
-
-  constructor() {}
-
-  // Odczytuje wydarzenia z localStorage
-  private loadEventsFromStorage(): any[] {
-    const savedEvents = localStorage.getItem(this.eventsKey);
-    return savedEvents ? JSON.parse(savedEvents) : [];
-  }
-
-  // Zapisuje wydarzenia do localStorage
-  private saveEventsToStorage(events: any[]) {
-    localStorage.setItem(this.eventsKey, JSON.stringify(events));
-  }
-
-  // Zwraca bieżące wydarzenia
-  getEvents(): any[] {
-    return this.eventsSubject.value;
-  }
-
-  // Dodaje nowe wydarzenie i aktualizuje localStorage
-  addEvent(event: any) {
-    const updatedEvents = [...this.eventsSubject.value, event];
-    this.saveEventsToStorage(updatedEvents);
-    this.eventsSubject.next(updatedEvents); // Uaktualniamy subskrybentów
-  }
-}*/
