@@ -1,4 +1,19 @@
-# Aplikacja do Zapisywania i Zarządzania wydarzeniami
+Version [PL](#aplikacja-do-zapisywania-i-zarządzania-wydarzeniami) | [ENG](#event-registration-and-management-app)
+# Aplikacja do zapisywania i zarządzania wydarzeniami
+## Spis treści
+- [Zespół](#zespół)
+- [Opis](#opis)
+- [Funkcjonalności](#funkcjonalności)
+- [Technologie](#technologie)
+- [Konfiguracja projektu](#konfiguracja-projektu)
+- [Dokumentacja](#dokumentacja)
+- [Instrukcja użytkownika](#instrukcja-użytkownika)
+
+## Zespół
+Projekt został wykonany przez:
+- [pawelsiemieniuk](https://github.com/pawelsiemieniuk)
+- [Tomaszak420](https://github.com/Tomaszak420)
+- [wersosn](https://github.com/wersosn)
 
 ## Opis
 Aplikacja umożliwia użytkownikom zapisywanie się na wydarzenia organizowane przez administratora. Użytkownicy muszą się zarejestrować lub zalogować, aby brać udział w wydarzeniach. Aplikacja wyświetla wszystkie dostępne wydarzenia na stronie głównej, a użytkownik może wybrać wydarzenie, zapoznać się z jego szczegółami, a następnie wybrać godzinę, na którą chce się zapisać.
@@ -14,6 +29,13 @@ Po zapisaniu się na wydarzenie, dane o wydarzeniach, w których bierze udział 
 - **Zarządzanie wydarzeniami przez administratora**: Administratora może edytować,usuwać,tworzyć wydarzenia a nawet dodawać,usuwać wolontariuszy z wydarzeń.
 - **Ograniczenie liczby miejsc**: Liczba dostępnych miejsc na wydarzeniu jest ograniczona. Po zapisaniu się użytkownika liczba dostępnych miejsc zmniejsza się.
 
+## Technologie
+- Angular 2+
+- Node.js
+- TypeScript
+- JavaScript
+- HTML
+- SCSS
 
 ## Konfiguracja projektu
 
@@ -36,15 +58,78 @@ ng serve
 ```
 Aplikacja zostanie uruchomiona lokalnie i dostępna pod adresem `http://localhost:4200/`
 
-
 ## Dokumentacja
 
 Wygenerowanie oraz uruchomienie dokumentacji:
 ```
 npm run compodoc
 ```
-Dokumentaca zostanie uruchomiona lokalnie i dostępna pod adresem `http://localhost:8080/`
-
+Dokumentacja zostanie uruchomiona lokalnie i dostępna pod adresem `http://localhost:8080/`
 
 ## Instrukcja użytkownika
-Spis treści dostępny jest w pliku [README](instrukcja/README.md) w katalogu `instrukcja`
+Spis treści dostępny jest w pliku [README]([instrukcja/README.md](https://github.com/wersosn/projekt-angular/tree/master/NGO-master/instrukcja)) w katalogu `instrukcja`
+
+---
+# Event Registration and Management app
+## Table of contents
+- [Team](#team)
+- [Description](#description)
+- [Functionalities](#functionalities)
+- [Tech stack](#tech-stack)
+- [Project setup](#project-setup)
+- [Documentation](#documentation)
+
+## Team
+The project was carried out by:
+- [pawelsiemieniuk](https://github.com/pawelsiemieniuk)
+- [Tomaszak420](https://github.com/Tomaszak420)
+- [wersosn](https://github.com/wersosn)
+  
+## Description
+This application allows users to register for events organized by an administrator. To participate in events, users must sign up or log in. The application displays all available events on the homepage, where users can browse event details and select a preferred time slot for registration. 
+
+Once registered, users can view their scheduled events in their account dashboard and the event calendar.
+
+## Functionalities
+- **User Registration and Login**: Users can create an account and log in to access the application.
+- **List of Available Events**: All events organized by the administrator are displayed on the homepage.
+- **Event Details**: Users can view detailed information about an event, including its description, date, time, location, and available spots.
+- **Event Registration and Cancellation**: Users can sign up for or cancel their registration for an event.
+- **User Calendar**: Registered events are displayed in the user's account dashboard and the event calendar.
+- **Event Management for Administrators**: Administrators can create, edit, and delete events, as well as add or remove volunteers from events.
+- **Limited Capacity Management**: Events have a limited number of spots. Once a user registers, the number of available spots decreases accordingly.
+
+## Tech stack
+- Angular 2+
+- Node.js
+- TypeScript
+- JavaScript
+- HTML
+- SCSS
+
+## Project setup
+### Requirements
+Installed [Node.js](https://nodejs.org/) with the package manager [npm](https://www.npmjs.com/get-npm)
+
+### Instalation steps
+Clone the repository and navigate to the project folder:
+```
+git clone https://github.com/wersosn/projekt-angular.git 
+cd projekt-angular/NGO-master
+```
+Install the required dependencies:
+```
+npm install
+```
+Run the application in development mode:
+```
+ng serve
+```
+The application will be available locally at `http://localhost:4200/`
+
+## Documentation
+To generate and open the project documentation, run:
+```
+npm run compodoc
+```
+The documentation will be available at `http://localhost:8080/`
