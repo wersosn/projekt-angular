@@ -67,7 +67,7 @@ npm run compodoc
 Dokumentacja zostanie uruchomiona lokalnie i dostępna pod adresem `http://localhost:8080/`
 
 ## Instrukcja użytkownika
-Spis treści dostępny jest w pliku [README]([instrukcja/README.md](https://github.com/wersosn/projekt-angular/tree/master/NGO-master/instrukcja)) w katalogu `instrukcja`
+Spis treści dostępny jest w pliku [README]([instrukcja/README.md](https://github.com/wersosn/projekt-angular/tree/master/NGO-master/instrukcja) w katalogu `instrukcja`
 
 ---
 # Event Registration and Management app
