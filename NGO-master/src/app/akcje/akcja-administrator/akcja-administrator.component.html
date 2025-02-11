@@ -6,6 +6,7 @@
             <p><strong>Lokalizacja:</strong> {{ event.location }}</p>
             <button class="btn" [routerLink]="['/akcje/szczegóły', event?.id]" routerLinkActive="active" ariaCurrentWhenActive="page">Szczegóły Akcji</button>
             <button class="btn" [routerLink]="['/akcje/edytuj', event?.id]" routerLinkActive="active" ariaCurrentWhenActive="page">Edytuj Akcje</button>
+            <button class="btn" (click)="deleteEvent(event.id)">Usuń wydarzenie</button>
         </div>
         <div class="col-3">
             <p><strong>Opis:</strong> {{ event.description }}</p>

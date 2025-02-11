@@ -131,21 +131,23 @@ export class EventService {
   removeEvent(userId: number, eventId: number): Observable<any> {
     // Pobieramy użytkownika
     return this.http.get<any>(`${this.apiUrl}/users/${userId}`).pipe(
-      tap(user => {
+      switchMap((user) => {
         // Usuwamy eventId z listy zapisanych wydarzeń
         user.events = user.events.filter((id: number) => id !== eventId);
-
+  
         // Zapisujemy zaktualizowanego użytkownika w backendzie
-        this.http.put(`${this.apiUrl}/users/${userId}`, user).subscribe();
-
-        // Pobieramy dane wydarzenia
-        this.http.get<any>(`${this.apiUrl}/api/events/${eventId}`).subscribe(event => {
+        return this.http.put(`${this.apiUrl}/users/${userId}`, user).pipe(
+          // Po zapisaniu użytkownika, pobieramy dane wydarzenia
+          switchMap(() => this.http.get<any>(`${this.apiUrl}/api/events/${eventId}`)),
           // Zwiększamy liczbę dostępnych miejsc
-          event.seats += 1;
-          // Zaktualizowanie wydarzenia w backendzie
-          this.http.put(`${this.apiUrl}/api/events/${eventId}`, event).subscribe();
-        });
+          switchMap((event) => {
+            event.seats += 1;
+            // Zaktualizowanie wydarzenia w backendzie
+            return this.http.put(`${this.apiUrl}/api/events/${eventId}`, event);
+          })
+        );
       })
     );
   }
+  
 }

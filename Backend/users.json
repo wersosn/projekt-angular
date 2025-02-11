@@ -160,5 +160,46 @@
       1733128039142,
       1732362385388
     ]
+  },
+  {
+    "id": 12,
+    "role": "user",
+    "login": "Ann",
+    "password": "Abc123!",
+    "name": "Anna",
+    "surname": "Nowak",
+    "email": "annanowak@gmail.com",
+    "phone": "999999999",
+    "address": "Warszawa",
+    "gender": "F",
+    "events": [
+      1732362385388
+    ]
+  },
+  {
+    "id": 13,
+    "role": "administrator",
+    "login": "Jan",
+    "password": "Abc123!",
+    "name": "Jan",
+    "surname": "Kowalski",
+    "email": "jankowal@gamil.com",
+    "phone": "888888888",
+    "address": "Białystok",
+    "gender": "M",
+    "events": []
+  },
+  {
+    "id": 14,
+    "role": "user",
+    "login": "Basia",
+    "password": "Abc123!",
+    "name": "Basia",
+    "surname": "Nowak",
+    "email": "basia127@gmail.com",
+    "phone": "999999999",
+    "address": "Warszawa",
+    "gender": "F",
+    "events": []
   }
 ]

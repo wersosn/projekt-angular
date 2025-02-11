@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { EventService } from '../../event.service';
+import { RouterModule, Router } from '@angular/router';
 
 /**
  * Komponent odpowiedzialny za wyświetlanie i interakcję z pojedynczym wydarzeniem dla wolontariusza.
@@ -7,7 +8,7 @@ import { EventService } from '../../event.service';
 @Component({
   selector: 'akcja',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './akcja.component.html',
   styleUrl: './akcja.component.scss'
 })
@@ -23,7 +24,7 @@ export class Akcja {
    * Tworzy instancję komponentu Akcja.
    * @param {EventService} eventService - Serwis który pobiera dane o eventach.
    */
-  constructor(protected eventService: EventService) { }
+  constructor(protected eventService: EventService, private router: Router) { }
 
   /**
    * Usuwa wydarzenie z listy zapisanych wydarzeń zalogowanego wolontariusza.
@@ -41,6 +42,23 @@ export class Akcja {
         error: (err) => {
           console.error('Błąd przy rezygnacji z wydarzenia:', err);
           alert('Wystąpił problem przy rezygnacji.');
+        }
+      });
+    }
+  }
+
+  
+  deleteEvent(eventId: number) {
+    if (confirm('Czy na pewno chcesz usunąć to wydarzenie?')) {
+      this.eventService.deleteEvent(eventId).subscribe({
+        next: (response) => {
+
+          alert('Wydarzenie zostało usunięte.');
+          this.router.navigate(['']);  // Przekierowanie na stronę główną lub listę wydarzeń
+        },
+        error: (err) => {
+          console.error('Błąd podczas usuwania wydarzenia:', err);
+          alert('Wystąpił błąd podczas usuwania wydarzenia.');
         }
       });
     }

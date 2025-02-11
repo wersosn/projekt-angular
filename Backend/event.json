@@ -2,7 +2,7 @@
   {
     "id": 1732357477256,
     "title": "Akcja 1",
-    "description": "Test",
+    "description": "Test 23",
     "date": "2024-11-23",
     "time": "16:24",
     "location": "Białystok",
@@ -15,7 +15,7 @@
     "date": "2024-12-08",
     "time": "23:00",
     "location": "Warszawa",
-    "seats": 61,
+    "seats": 60,
     "color": "green"
   },
   {
@@ -35,5 +35,14 @@
     "time": "11:00",
     "location": "bb",
     "seats": 2
+  },
+  {
+    "id": 1734006985096,
+    "title": "Akcja",
+    "description": "Opis",
+    "date": "2024-12-27",
+    "time": "16:36",
+    "location": "Warszawa",
+    "seats": 1
   }
 ]

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { Akcja } from '../akcja/akcja.component';
 import { ListaUczestnikow } from './lista-uczestnikow/lista-uczestnikow.component';
 import { DodajUczestnika } from "./dodaj-uczestnika/dodaj-uczestnika.component";
@@ -25,6 +25,7 @@ export class AkcjaAdministrator extends Akcja {
   addVisible: boolean = false;
   /**@ignore*/
   users: User[] = [];
+
   /** @ignore */
   toggleList(): void {
     this.removeVisible = false;

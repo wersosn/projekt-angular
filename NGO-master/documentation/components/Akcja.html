@@ -157,6 +157,12 @@
                 <td class="col-md-9"><code>true</code></td>
             </tr>
 
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>RouterModule</code>
+                </td>
+            </tr>
 
 
 
@@ -197,6 +203,9 @@
                             <li>
                                 <a href="#cancelEvent" >cancelEvent</a>
                             </li>
+                            <li>
+                                <a href="#deleteEvent" >deleteEvent</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -229,12 +238,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(eventService: <a href="../injectables/EventService.html" target="_self">EventService</a>)</code>
+<code>constructor(eventService: <a href="../injectables/EventService.html" target="_self">EventService</a>, router: Router)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/akcje/akcja/akcja.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/akcje/akcja/akcja.component.ts:21</a></div>
                             </td>
                         </tr>
 
@@ -272,6 +281,20 @@
 
                                                         </td>
                                                 </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -299,7 +322,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/akcje/akcja/akcja.component.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/akcje/akcja/akcja.component.ts:21</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -339,8 +362,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="34"
-                                    class="link-to-prism">src/app/akcje/akcja/akcja.component.ts:34</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="35"
+                                    class="link-to-prism">src/app/akcje/akcja/akcja.component.ts:35</a></div>
                         </td>
                     </tr>
 
@@ -395,6 +418,73 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteEvent"></a>
+                    <span class="name">
+                        <span ><b>deleteEvent</b></span>
+                        <a href="#deleteEvent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteEvent(eventId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/akcje/akcja/akcja.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>eventId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
 
 </div>
@@ -403,6 +493,7 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
 import { EventService } from &#x27;../../event.service&#x27;;
+import { RouterModule, Router } from &#x27;@angular/router&#x27;;
 
 /**
  * Komponent odpowiedzialny za wyświetlanie i interakcję z pojedynczym wydarzeniem dla wolontariusza.
@@ -410,7 +501,7 @@ import { EventService } from &#x27;../../event.service&#x27;;
 @Component({
   selector: &#x27;akcja&#x27;,
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: &#x27;./akcja.component.html&#x27;,
   styleUrl: &#x27;./akcja.component.scss&#x27;
 })
@@ -426,7 +517,7 @@ export class Akcja {
    * Tworzy instancję komponentu Akcja.
    * @param {EventService} eventService - Serwis który pobiera dane o eventach.
    */
-  constructor(protected eventService: EventService) { }
+  constructor(protected eventService: EventService, private router: Router) { }
 
   /**
    * Usuwa wydarzenie z listy zapisanych wydarzeń zalogowanego wolontariusza.
@@ -444,6 +535,23 @@ export class Akcja {
         error: (err) &#x3D;&gt; {
           console.error(&#x27;Błąd przy rezygnacji z wydarzenia:&#x27;, err);
           alert(&#x27;Wystąpił problem przy rezygnacji.&#x27;);
+        }
+      });
+    }
+  }
+
+  
+  deleteEvent(eventId: number) {
+    if (confirm(&#x27;Czy na pewno chcesz usunąć to wydarzenie?&#x27;)) {
+      this.eventService.deleteEvent(eventId).subscribe({
+        next: (response) &#x3D;&gt; {
+
+          alert(&#x27;Wydarzenie zostało usunięte.&#x27;);
+          this.router.navigate([&#x27;&#x27;]);  // Przekierowanie na stronę główną lub listę wydarzeń
+        },
+        error: (err) &#x3D;&gt; {
+          console.error(&#x27;Błąd podczas usuwania wydarzenia:&#x27;, err);
+          alert(&#x27;Wystąpił błąd podczas usuwania wydarzenia.&#x27;);
         }
       });
     }

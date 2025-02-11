@@ -213,6 +213,9 @@
                             <li>
                                 <a href="#cancelEvent" >cancelEvent</a>
                             </li>
+                            <li>
+                                <a href="#deleteEvent" >deleteEvent</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -264,7 +267,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../components/Akcja.html#source" target="_self" >Akcja:20</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../components/Akcja.html#source" target="_self" >Akcja:21</a></code>
 </div>
                             </td>
                         </tr>
@@ -311,7 +314,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../components/Akcja.html#source" target="_self" >Akcja:34</a></code>
+                                <div class="io-line">Defined in         <code><a href="../components/Akcja.html#source" target="_self" >Akcja:35</a></code>
 </div>
                         </td>
                     </tr>
@@ -367,6 +370,79 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteEvent"></a>
+                    <span class="name">
+                        <span ><b>deleteEvent</b></span>
+                        <a href="#deleteEvent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteEvent(eventId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Inherited from         <code><a href="../components/Akcja.html" target="_self" >Akcja</a></code>
+</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/Akcja.html#source" target="_self" >Akcja:51</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>eventId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
 
 </div>
@@ -374,7 +450,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
-import { RouterModule } from &#x27;@angular/router&#x27;;
+import { RouterModule, Router } from &#x27;@angular/router&#x27;;
 import { Akcja } from &#x27;../akcja/akcja.component&#x27;;
 import { ListaUczestnikow } from &#x27;./lista-uczestnikow/lista-uczestnikow.component&#x27;;
 import { DodajUczestnika } from &quot;./dodaj-uczestnika/dodaj-uczestnika.component&quot;;
@@ -400,6 +476,7 @@ export class AkcjaAdministrator extends Akcja {
   addVisible: boolean &#x3D; false;
   /**@ignore*/
   users: User[] &#x3D; [];
+
   /** @ignore */
   toggleList(): void {
     this.removeVisible &#x3D; false;
@@ -435,6 +512,7 @@ export class AkcjaAdministrator extends Akcja {
             &lt;p&gt;&lt;strong&gt;Lokalizacja:&lt;/strong&gt; {{ event.location }}&lt;/p&gt;
             &lt;button class&#x3D;&quot;btn&quot; [routerLink]&#x3D;&quot;[&#x27;/akcje/szczegóły&#x27;, event?.id]&quot; routerLinkActive&#x3D;&quot;active&quot; ariaCurrentWhenActive&#x3D;&quot;page&quot;&gt;Szczegóły Akcji&lt;/button&gt;
             &lt;button class&#x3D;&quot;btn&quot; [routerLink]&#x3D;&quot;[&#x27;/akcje/edytuj&#x27;, event?.id]&quot; routerLinkActive&#x3D;&quot;active&quot; ariaCurrentWhenActive&#x3D;&quot;page&quot;&gt;Edytuj Akcje&lt;/button&gt;
+            &lt;button class&#x3D;&quot;btn&quot; (click)&#x3D;&quot;deleteEvent(event.id)&quot;&gt;Usuń wydarzenie&lt;/button&gt;
         &lt;/div&gt;
         &lt;div class&#x3D;&quot;col-3&quot;&gt;
             &lt;p&gt;&lt;strong&gt;Opis:&lt;/strong&gt; {{ event.description }}&lt;/p&gt;
@@ -540,7 +618,7 @@ export class AkcjaAdministrator extends Akcja {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="container mt-3">    <div class="action-box col-12">        <div class="action-details col-2">            <h3 style="font-weight: 700;">{{ event.title }}</h3>            <p><strong>Data:</strong> {{ event.date }}</p>            <p><strong>Lokalizacja:</strong> {{ event.location }}</p>            <button class="btn" [routerLink]="[\'/akcje/szczegóły\', event?.id]" routerLinkActive="active" ariaCurrentWhenActive="page">Szczegóły Akcji</button>            <button class="btn" [routerLink]="[\'/akcje/edytuj\', event?.id]" routerLinkActive="active" ariaCurrentWhenActive="page">Edytuj Akcje</button>        </div>        <div class="col-3">            <p><strong>Opis:</strong> {{ event.description }}</p>        </div>        <div class="action-buttons col-2">                       <button class="btn" (click)="toggleList()">Pokaż listy uczestników</button>            <button class="btn" (click)="toggleAdd()">Dodaj uczestnika do listy</button>            <button class="btn" (click)="toggleRemove()">Usuń uczestnika z listy</button>                    </div>         <!-- Lista Podstawowa -->        <div class="col-4 text-center">            <h6 class="mb-2">Lista podstawowa:</h6>            <div class="d-flex flex-wrap gap-2 mb-3 justify-content-center">                @if(event.seats <= 0){                    <button                    type="button"                    class="btn btn-secondary"                    >                    {{ event.time }}                    <br />                    <small class="text-white">Liczba miejsc: {{ event.seats }}</small>                  </button>                } @else {                <button                    type="button"                    class="btn btn-primary"                >                    {{ event.time }}                    <br />                    <small class="text-white">Liczba miejsc: {{ event.seats }}</small>                </button>                }            </div>        </div>    </div>    @if(listVisible) {        <div class="action-box col-12 mt-3">            <lista-uczestnikow class="col-12" [eventId]="event.id"></lista-uczestnikow>        </div>    }    @if(removeVisible) {        <div class="action-box col-12 mt-3 d-flex flex-column align-items-center" >            <szukaj-uczestnika (findUserEvent)="findUsers($event)"></szukaj-uczestnika>            <div class="users-list w-100 mt-3">                <div class="user-header">                    <label class="form-label">ID</label>                    <label class="form-label">Imię</label>                    <label class="form-label">Nazwisko</label>                </div>            @for(user of users; track user.id) {                <usun-uczestnika [user]="user" [event]="event" class="user-item mb-2"></usun-uczestnika>            }        </div>        </div>    }    @if(addVisible) {        <div class="action-box col-12 mt-3 d-flex flex-column align-items-center">            <szukaj-uczestnika (findUserEvent)="findUsers($event)"></szukaj-uczestnika>                        <div class="users-list w-100 mt-3">                <div class="user-header">                    <label class="form-label">ID</label>                    <label class="form-label">Imię</label>                    <label class="form-label">Nazwisko</label>                </div>                            @for(user of users; track user.id) {                    <dodaj-uczestnika class="user-item col-12 mb-2" [user]="user" [event]="event"></dodaj-uczestnika>                }            </div>        </div>    }    </div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="container mt-3">    <div class="action-box col-12">        <div class="action-details col-2">            <h3 style="font-weight: 700;">{{ event.title }}</h3>            <p><strong>Data:</strong> {{ event.date }}</p>            <p><strong>Lokalizacja:</strong> {{ event.location }}</p>            <button class="btn" [routerLink]="[\'/akcje/szczegóły\', event?.id]" routerLinkActive="active" ariaCurrentWhenActive="page">Szczegóły Akcji</button>            <button class="btn" [routerLink]="[\'/akcje/edytuj\', event?.id]" routerLinkActive="active" ariaCurrentWhenActive="page">Edytuj Akcje</button>            <button class="btn" (click)="deleteEvent(event.id)">Usuń wydarzenie</button>        </div>        <div class="col-3">            <p><strong>Opis:</strong> {{ event.description }}</p>        </div>        <div class="action-buttons col-2">                       <button class="btn" (click)="toggleList()">Pokaż listy uczestników</button>            <button class="btn" (click)="toggleAdd()">Dodaj uczestnika do listy</button>            <button class="btn" (click)="toggleRemove()">Usuń uczestnika z listy</button>                    </div>         <!-- Lista Podstawowa -->        <div class="col-4 text-center">            <h6 class="mb-2">Lista podstawowa:</h6>            <div class="d-flex flex-wrap gap-2 mb-3 justify-content-center">                @if(event.seats <= 0){                    <button                    type="button"                    class="btn btn-secondary"                    >                    {{ event.time }}                    <br />                    <small class="text-white">Liczba miejsc: {{ event.seats }}</small>                  </button>                } @else {                <button                    type="button"                    class="btn btn-primary"                >                    {{ event.time }}                    <br />                    <small class="text-white">Liczba miejsc: {{ event.seats }}</small>                </button>                }            </div>        </div>    </div>    @if(listVisible) {        <div class="action-box col-12 mt-3">            <lista-uczestnikow class="col-12" [eventId]="event.id"></lista-uczestnikow>        </div>    }    @if(removeVisible) {        <div class="action-box col-12 mt-3 d-flex flex-column align-items-center" >            <szukaj-uczestnika (findUserEvent)="findUsers($event)"></szukaj-uczestnika>            <div class="users-list w-100 mt-3">                <div class="user-header">                    <label class="form-label">ID</label>                    <label class="form-label">Imię</label>                    <label class="form-label">Nazwisko</label>                </div>            @for(user of users; track user.id) {                <usun-uczestnika [user]="user" [event]="event" class="user-item mb-2"></usun-uczestnika>            }        </div>        </div>    }    @if(addVisible) {        <div class="action-box col-12 mt-3 d-flex flex-column align-items-center">            <szukaj-uczestnika (findUserEvent)="findUsers($event)"></szukaj-uczestnika>                        <div class="users-list w-100 mt-3">                <div class="user-header">                    <label class="form-label">ID</label>                    <label class="form-label">Imię</label>                    <label class="form-label">Nazwisko</label>                </div>                            @for(user of users; track user.id) {                    <dodaj-uczestnika class="user-item col-12 mb-2" [user]="user" [event]="event"></dodaj-uczestnika>                }            </div>        </div>    }    </div></div>'
     var COMPONENTS = [{'name': 'Akcja', 'selector': 'akcja'},{'name': 'AkcjaAdministrator', 'selector': 'akcja-administrator'},{'name': 'Akcje', 'selector': 'app-akcje'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BlogAkcji', 'selector': 'app-blog-akcji'},{'name': 'DodajAkcje', 'selector': 'app-dodaj-akcje'},{'name': 'DodajUczestnika', 'selector': 'dodaj-uczestnika'},{'name': 'EdytujAkcje', 'selector': 'app-edytuj-akcje'},{'name': 'Kalendarz', 'selector': 'app-kalendarz'},{'name': 'Konto', 'selector': 'app-konto'},{'name': 'ListaUczestnikow', 'selector': 'lista-uczestnikow'},{'name': 'Logowanie', 'selector': 'app-logowanie'},{'name': 'Rejestracja', 'selector': 'app-rejestracja'},{'name': 'StronaAkcji', 'selector': 'app-strona-akcji'},{'name': 'SzukajUczestnika', 'selector': 'szukaj-uczestnika'},{'name': 'UsunUczestnika', 'selector': 'usun-uczestnika'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AkcjaAdministrator'};
