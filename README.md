@@ -58,6 +58,13 @@ ng serve
 ```
 Aplikacja zostanie uruchomiona lokalnie i dostępna pod adresem `http://localhost:4200/`
 
+Uruchomienie Node.js:
+```
+cd projekt-angular/Backend
+node app.js
+```
+Backend zostanie uruchomiony lokalnie i będzie dostępny pod adresem `http://localhost:3000/`
+
 ## Dokumentacja
 
 Wygenerowanie oraz uruchomienie dokumentacji:
@@ -126,6 +133,13 @@ Run the application in development mode:
 ng serve
 ```
 The application will be available locally at `http://localhost:4200/`
+
+Run Node.js:
+```
+cd projekt-angular/Backend
+node app.js
+```
+The backend will be available locally at `http://localhost:3000/`
 
 ## Documentation
 To generate and open the project documentation, run:
