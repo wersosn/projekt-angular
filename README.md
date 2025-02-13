@@ -1,4 +1,4 @@
-Version [PL](#aplikacja-do-zapisywania-i-zarządzania-wydarzeniami) | [ENG](#event-registration-and-management-app)
+Version [PL](#aplikacja-do-zapisywania-i-zarządzania-wydarzeniami) | [ENG](#event-registration-and-management-app) | [React version](https://github.com/wersosn/projekt-react)
 # Aplikacja do zapisywania i zarządzania wydarzeniami
 ## Spis treści
 - [Zespół](#zespół)
